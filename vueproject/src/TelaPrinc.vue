@@ -27,7 +27,7 @@
             <div>
               <DxButton
                 :width="120"
-                text="Genshin"
+                text="Genshinn"
                 type="normal"
                 styling-mode="contained"
                 @click="onClick($event)"
