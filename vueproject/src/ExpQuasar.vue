@@ -21,6 +21,13 @@
         </q-btn>
       </div>      
       <div>
+        <q-btn round color="white" text-color="black"  @click="NotifyClick3">
+          <q-avatar size="100px">
+            <img src="https://scontent.fcgh39-1.fna.fbcdn.net/v/t1.18169-9/28059400_2013382172283676_9053847063793895573_n.jpg?_nc_cat=100&ccb=1-7&_nc_sid=174925&_nc_eui2=AeF-gp60X2a20PI9o1MtiFtTA-1irk79VLID7WKuTv1UsrcFCCoCXfcSosZeZLlM7wpRorh1w_yXa6kVDkSc39bS&_nc_ohc=P23xdhtJ34UAX8GMU2I&_nc_ht=scontent.fcgh39-1.fna&oh=00_AfD_APRwbtnVtCTjPDdpPGgO7DeVYX-wML1QMTDS6iAucg&oe=63BC7659">          
+          </q-avatar>
+        </q-btn>
+      </div>        
+      <div>
         <q-btn color="deep-purple" icon="repartition" glossy label="Voltar" @click="QuasarClick" />
       </div>             
     </div>      
@@ -58,7 +65,14 @@
             color: 'deep-purple',
             caption: 'Mensagem Automática'
           })
-        }        
+        },
+        NotifyClick3() {
+          $q.notify({
+            message: 'Tio eu tenho Shiny! E to procurando a Tartaruga',
+            color: 'pink',
+            caption: 'Mensagem Automática'
+          })
+        }                 
       }
     },    
     methods: {
