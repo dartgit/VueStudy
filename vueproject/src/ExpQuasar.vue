@@ -1,11 +1,11 @@
 <template>
   <div>
-    <div class="buttons-columnq">
-      <div class="column-headerq">
+    <div class="buttons-columnqn">
+      <div class="column-headerqn">
         QUASAR
       </div>
     </div>
-    <div class="buttons-row">
+    <div class="buttons-rowqn">
       <div>
         <q-btn round color="white"  text-color="black"  @click="NotifyClick2">
           <q-avatar size="100px">
@@ -16,7 +16,7 @@
       <div>
         <q-btn round color="white" text-color="black"  @click="NotifyClick">
           <q-avatar size="100px">
-            <img src="https://scontent.fcgh39-1.fna.fbcdn.net/v/t39.30808-6/310478933_2266637613492444_467116057370013632_n.jpg?_nc_cat=108&ccb=1-7&_nc_sid=09cbfe&_nc_eui2=AeFq-iQOCVte4iboL8vRoGrnQs_U3XKm3flCz9Tdcqbd-WhKHmio--NnSiTocvU6mePuDG4KlhzvE5Y9GHP9GNqZ&_nc_ohc=dLB6B_AlaXIAX9LKwPy&_nc_ht=scontent.fcgh39-1.fna&oh=00_AfBVPP4ikUB-PpOycexdxdKL-DdEqK-kaehXDv3T14gicw&oe=6399BCE1">          
+            <img src="https://scontent.fcgh39-1.fna.fbcdn.net/v/t1.18169-9/12002218_518769281612628_8733454581447385574_n.jpg?_nc_cat=110&ccb=1-7&_nc_sid=174925&_nc_eui2=AeFke81C91BHUN1i9Mrv2yphGj6Tqob19nwaPpOqhvX2fBT4i_t2lImfUAoerItYo6BjsAkdcm65iaiqpEmGfm9J&_nc_ohc=57dBJolZsNUAX8Y6A-B&_nc_ht=scontent.fcgh39-1.fna&oh=00_AfBxmL6IxZDpceC_V7feoU5i-WRdyRgpviHrwHdyTbW76A&oe=63C3556E">          
           </q-avatar>
         </q-btn>
       </div>      
@@ -99,7 +99,7 @@
   </script>
   
   <style>
-    .buttons-columnq > .column-headerq {
+    .buttons-columnqn > .column-headerqn {
     width: 150px;
     height: 50px;
     text-align: center;
@@ -107,13 +107,13 @@
     color : rgb(71, 2, 71);
   }
 
-  .buttons-columnq > div {
+  .buttons-columnqn > div {
     width: 150px;
     height: 50px;
     text-align: center;
   }
   
-  .buttons-columnq {
+  .buttons-columnqn {
     width: 150px;
     height: 50px;
     font-size: 30px;
@@ -121,7 +121,7 @@
     justify-content: center;
   }
   
-  .buttons-row > .row-header {
+  .buttons-rowqn > .row-header {
     flex-grow: 0;
     width: 150px;
     height: 50px;
@@ -131,13 +131,13 @@
     padding-left: 15px;
   }  
 
-  .buttons-row > div {
+  .buttons-rowqn > div {
     width: 150px;
     height: 110px;
     text-align: center;
   }  
 
-  .buttons-row {
+  .buttons-rowqn {
     width: 150px;
     height: 300px;
     padding-left: 20px;        
