@@ -160,7 +160,7 @@
       </div>
       <div class="buttons-column">   
         <div>
-          <q-btn color="deep-purple" label="Tela" text="Tela" @click="QuasarClick" />
+          <q-btn color="deep-purple" label="Calculadora" text="Calculadora" @click="QuasarClick" />
         </div>
       </div>
     </div>
@@ -176,7 +176,8 @@
   import ExpQuasar from './ExpQuasar.vue'
   import ExpDevX from './ExpDevX.vue'
   import GridDev from './GridDev.vue'
-  import TelaDenis from './TelaDenis.vue';
+  import TelaDenis from './TelaDenis.vue'
+  import CalcQuasar from './CalcQuasar.vue';
   import { Quasar } from 'quasar'
   import quasarUserOptions from './quasar-user-options'
   
@@ -189,7 +190,7 @@
     },
     methods: {
       QuasarClick() {
-        createApp(TelaDenis).use(Quasar, quasarUserOptions).mount('#app')
+        createApp(CalcQuasar).use(Quasar, quasarUserOptions).mount('#app')
       },
 
       onClick(e) {
