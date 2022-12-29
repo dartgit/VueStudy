@@ -1,11 +1,11 @@
 <template>
-    <div>
-      <div class="buttons-columnq">
-        <div class="column-headerq">
-          Calculadora
-        </div>
-      </div>
-      <div class="buttons-row">
+    <div class="q-pa-md q-gutter-sm">
+      <q-btn label="Confirm" color="primary" @click="confirm = true" />
+  
+      <q-dialog v-model="confirm" persistent>
+        <q-card>
+          <q-card-section class="row items-center">
+            <div class="buttons-row">
         <div>
           <q-input rounded outlined v-model="text"/>
         </div>    
@@ -39,108 +39,31 @@
           <q-btn round color="blue" text-color="black" label=","  @click="btnC('/')"></q-btn>
           <q-btn round color="orange" text-color="black" label="="  @click="btnC('/')"></q-btn>
         </div>                                
-      </div>      
-      <div>
-        <div class="buttons-row">
-          <q-btn color="deep-purple" icon="repartition" glossy label="Voltar" @click="QuasarClick"/>
-        </div>        
-      </div>
+      </div> 
+          </q-card-section>
+  
+          <q-card-actions align="right">
+            <q-btn flat label="Cancel" color="primary" v-close-popup />
+            <q-btn flat label="Turn on Wifi" color="primary" v-close-popup />
+          </q-card-actions>
+        </q-card>
+      </q-dialog>
     </div>
   </template>
-    
-    <script>
-    
-    import 'devextreme/data/odata/store';  
-    //import DxButton from 'devextreme-vue/button';
-    import { createApp } from 'vue'
-    import TelaPrinc from './TelaPrinc.vue';
-    import { Quasar } from 'quasar'
-    import quasarUserOptions from './quasar-user-options'  
-
   
-    export default {
-      components: {
-        //DxButton,
-      },
-      
-      data () { 
-        return{
-          C: "",
-          text: ""
-        }
-      },
-    
-      methods: {
-        QuasarClick() {
-          createApp(TelaPrinc).use(Quasar, quasarUserOptions).mount('#app')
-        }, 
-
-        btnC(C) {
-            this.text+=C
-            console.log(C, this.text);
-        },
-
-        onClick(e) {
-          
-          var btex = String;
-    
-          btex = e.component.option('text');
-          if (btex == 'Voltar'){
-            createApp(TelaPrinc).use(Quasar, quasarUserOptions).mount('#app')
-          }
-          
-        },
-        capitalize(text) {
-          return text.charAt(0).toUpperCase() + text.slice(1);
-        },
-      },
-    }
-    
-    </script>
-    
-    <style>
-      .buttons-columnq > .column-headerq {
-      width: 360px;
-      height: 50px;
-      text-align: center;
-      padding-left: 15px;
-      color : rgb(71, 2, 71);
-    }
+  <script>
+  import { ref } from 'vue'
   
-    .buttons-columnq > div {
-      width: 360px;
-      height: 50px;
-      text-align: center;
-    }
-    
-    .buttons-columnq {
-      width: 360px;
-      height: 50px;
-      font-size: 30px;
-      padding-left: 1px;    
-      justify-content: center;
-      text-align: center;
-    }
-    
-    .buttons-row > .row-header {
-      flex-grow: 0;
-      width: 360px;
-      height: 50px;
-      font-size: 130%;
-      opacity: 0.6;
-      text-align: left;
-      padding-left: 15px;
-    }  
+  export default {
+    setup () {
+      return {
+        alert: ref(false),
+        confirm: ref(false),
+        prompt: ref(false),
   
-    .buttons-row > div {
-      width: 360px;
-      height: 65px;
-      text-align: center;
-    }  
-  
-    .buttons-row {
-      width: 360px;
-      height: 400px;     
-      justify-content: center;    
+        address: ref('')
+      }
     }
-    </style>
+  }
+  </script>
+  
