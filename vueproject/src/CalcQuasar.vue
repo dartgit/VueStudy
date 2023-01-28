@@ -16,26 +16,26 @@
           <q-btn round color="orange" text-color="black" label="/" @click="btnC('/')"></q-btn>
         </div>      
         <div class="q-pa-md q-gutter-sm">
-          <q-btn round color="blue" text-color="black" label="7" @click="btnC('/')"></q-btn>
-          <q-btn round color="blue" text-color="black" label="8" @click="btnC('/')"></q-btn>
-          <q-btn round color="blue" text-color="black" label="9" @click="btnC('/')"></q-btn>
+          <q-btn round color="blue" text-color="black" label="7" @click="btnC('7')"></q-btn>
+          <q-btn round color="blue" text-color="black" label="8" @click="btnC('8')"></q-btn>
+          <q-btn round color="blue" text-color="black" label="9" @click="btnC('9')"></q-btn>
           <q-btn round color="orange" text-color="black" label="*" @click="btnC('/')"></q-btn>
         </div>        
         <div class="q-pa-md q-gutter-sm">
-          <q-btn round color="blue" text-color="black" label="4"  @click="btnC('/')"></q-btn>
-          <q-btn round color="blue" text-color="black" label="5"  @click="btnC('/')"></q-btn>
-          <q-btn round color="blue" text-color="black" label="6"  @click="btnC('/')"></q-btn>
+          <q-btn round color="blue" text-color="black" label="4"  @click="btnC('4')"></q-btn>
+          <q-btn round color="blue" text-color="black" label="5"  @click="btnC('5')"></q-btn>
+          <q-btn round color="blue" text-color="black" label="6"  @click="btnC('6')"></q-btn>
           <q-btn round color="orange" text-color="black" label="-"  @click="btnC('/')"></q-btn>
         </div>       
         <div class="q-pa-md q-gutter-sm">
-          <q-btn round color="blue" text-color="black" label="1"  @click="btnC('/')"></q-btn>
-          <q-btn round color="blue" text-color="black" label="2"  @click="btnC('/')"></q-btn>
-          <q-btn round color="blue" text-color="black" label="3"  @click="btnC('/')"></q-btn>
+          <q-btn round color="blue" text-color="black" label="1"  @click="btnC('1')"></q-btn>
+          <q-btn round color="blue" text-color="black" label="2"  @click="btnC('2')"></q-btn>
+          <q-btn round color="blue" text-color="black" label="3"  @click="btnC('3')"></q-btn>
           <q-btn round color="orange" text-color="black" label="+"  @click="btnC('/')"></q-btn>
         </div>                        
         <div class="q-pa-md q-gutter-sm">
           <q-btn round color="blue" text-color="black" label=""></q-btn>          
-          <q-btn round color="blue" text-color="black" label="0"  @click="btnC('/')"></q-btn>
+          <q-btn round color="blue" text-color="black" label="0"  @click="btnC('0')"></q-btn>
           <q-btn round color="blue" text-color="black" label=","  @click="btnC('/')"></q-btn>
           <q-btn round color="orange" text-color="black" label="="  @click="btnC('/')"></q-btn>
         </div>                                

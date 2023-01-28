@@ -4,5 +4,6 @@ import { createApp } from 'vue'
 import App from './TelaPrinc.vue'
 import { Quasar } from 'quasar'
 import quasarUserOptions from './quasar-user-options'
+import VueYoutube from 'vue-youtube'
 
-createApp(App).use(Quasar, quasarUserOptions).mount('#app')
+createApp(App).use(Quasar, quasarUserOptions, VueYoutube).mount('#app')
