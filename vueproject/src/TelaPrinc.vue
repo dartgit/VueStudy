@@ -213,7 +213,9 @@
             </q-card>
           </q-dialog> 
           
-          <q-btn color="deep-purple" disable label="Teste" @click="TesteClick"/>                 
+          <!--<q-btn color="deep-purple" disable label="Teste" @click="TesteClick"/> -->                
+          <q-btn color="deep-purple" label="Teste" @click="TesteClick"/>
+          <q-btn color="deep-purple" label="Teste2" @click="TesteClick2"/>          
         </div>
       </div>
     </div>
@@ -233,6 +235,7 @@
   import TelaDenis from './TelaDenis.vue'
   import CalcQuasar from './CalcQuasar.vue'
   import TesteT from './PageTest.vue'  
+  import TesteT2 from './PageTest2.vue'  
   import { Quasar } from 'quasar'
   import quasarUserOptions from './quasar-user-options'
   import { ref } from 'vue'  
@@ -264,7 +267,10 @@
       },
       TesteClick() {
         createApp(TesteT).use(Quasar, quasarUserOptions).mount('#app')
-      },      
+      }, 
+      TesteClick2() {
+        createApp(TesteT2).use(Quasar, quasarUserOptions).mount('#app')
+      },           
 
       btnC(C) {
         if (C == "C") {
