@@ -9,4 +9,6 @@ export const gallery = [
     'images/gallery/8.jpg',
     'images/gallery/9.jpg',
   ];
+
+export const LN = "";
   

@@ -244,7 +244,6 @@
   import { Quasar } from 'quasar'
   import quasarUserOptions from './quasar-user-options'
   import { ref } from 'vue'
-  import  LoginN from './LoginForm.vue'  
     
   export default {
     name: "app",
@@ -285,7 +284,8 @@
         createApp(TesteT3).use(Quasar, quasarUserOptions).mount('#app')
       },         
       TesteLabel() {
-        console.log(LoginN.prop);                
+        
+        console.log();                
         if (this.LoginName == "Denis") 
           this.LoginName='Fabiano';//LoginN.prop;
          else 

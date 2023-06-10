@@ -4,6 +4,6 @@ import { createApp } from 'vue'
 import App from './LoginForm.vue'
 import { Quasar } from 'quasar'
 import quasarUserOptions from './quasar-user-options'
-import VueYoutube from 'vue-youtube'
+import store from './store'
 
-createApp(App).use(Quasar, quasarUserOptions, VueYoutube).mount('#app')
+createApp(App).use(Quasar, quasarUserOptions, store).mount('#app')
