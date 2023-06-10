@@ -1,4 +1,6 @@
 <template>
+  <div>
+    <div class="Side"> {{ LoginName }} </div>
     <div class="buttons-demo">
       <div class="buttons">
         <div>
@@ -178,37 +180,37 @@
                     <div class="q-pa-md q-gutter-sm">
                       <q-btn round color="orange" text-color="black" label="C" @click="btnC('C')"></q-btn>
                       <q-btn round color="orange" text-color="black" label="B" @click="btnC('B')"></q-btn>
-                      <q-btn round color="orange" text-color="black" label='/' @click="btnC('%')"></q-btn>
+                      <q-btn round color="orange" text-color="black" label='%' @click="btnC('%')"></q-btn>
                       <q-btn round color="orange" text-color="black" label="/" @click="btnC('/')"></q-btn>
                     </div>      
                     <div class="q-pa-md q-gutter-sm">
                       <q-btn round color="blue" text-color="black" label="7" @click="btnC('7')"></q-btn>
                       <q-btn round color="blue" text-color="black" label="8" @click="btnC('8')"></q-btn>
                       <q-btn round color="blue" text-color="black" label="9" @click="btnC('9')"></q-btn>
-                      <q-btn round color="orange" text-color="black" label="*" @click="btnC('/')"></q-btn>
+                      <q-btn round color="orange" text-color="black" label="*" @click="btnC('*')"></q-btn>
                     </div>        
                     <div class="q-pa-md q-gutter-sm">
                       <q-btn round color="blue" text-color="black" label="4"  @click="btnC('4')"></q-btn>
                       <q-btn round color="blue" text-color="black" label="5"  @click="btnC('5')"></q-btn>
                       <q-btn round color="blue" text-color="black" label="6"  @click="btnC('6')"></q-btn>
-                      <q-btn round color="orange" text-color="black" label="-"  @click="btnC('/')"></q-btn>
+                      <q-btn round color="orange" text-color="black" label="-"  @click="btnC('-')"></q-btn>
                     </div>       
                     <div class="q-pa-md q-gutter-sm">
                       <q-btn round color="blue" text-color="black" label="1"  @click="btnC('1')"></q-btn>
                       <q-btn round color="blue" text-color="black" label="2"  @click="btnC('2')"></q-btn>
                       <q-btn round color="blue" text-color="black" label="3"  @click="btnC('3')"></q-btn>
-                      <q-btn round color="orange" text-color="black" label="+"  @click="btnC('/')"></q-btn>
+                      <q-btn round color="orange" text-color="black" label="+"  @click="btnC('+')"></q-btn>
                     </div>                        
                     <div class="q-pa-md q-gutter-sm">
                       <q-btn round color="blue" text-color="black" label=""></q-btn>          
-                      <q-btn round color="blue" text-color="black" label="0"  @click="btnC('/')"></q-btn>
-                      <q-btn round color="blue" text-color="black" label=","  @click="btnC('/')"></q-btn>
-                      <q-btn round color="orange" text-color="black" label="="  @click="btnC('/')"></q-btn>
+                      <q-btn round color="blue" text-color="black" label="0"  @click="btnC('0')"></q-btn>
+                      <q-btn round color="blue" text-color="black" label="."  @click="btnC('.')"></q-btn>
+                      <q-btn round color="orange" text-color="black" label="="  @click="btnC('=')"></q-btn>
                     </div>                                
                   </div>                    
               </q-card-section>
               <q-card-actions align="right" width="50">
-                <q-btn flat label="Cancel" color="primary" v-close-popup />
+                <q-btn flat label="Cancel" color="primary" @click="btnC('C')" v-close-popup />
               </q-card-actions>    
             </q-card>
           </q-dialog> 
@@ -216,10 +218,12 @@
           <!--<q-btn color="deep-purple" disable label="Teste" @click="TesteClick"/> -->                
           <q-btn color="deep-purple" label="Teste" @click="TesteClick"/>
           <q-btn color="deep-purple" label="Teste2" @click="TesteClick2"/>          
+          <q-btn color="deep-purple" label="Teste3" @click="TesteClick3"/>                    
+          <q-btn color="deep-purple" label="Teste Login" @click="TesteLabel"/>                    
         </div>
       </div>
     </div>
-
+  </div>
     
   </template>
   
@@ -236,9 +240,11 @@
   import CalcQuasar from './CalcQuasar.vue'
   import TesteT from './PageTest.vue'  
   import TesteT2 from './PageTest2.vue'  
+  import TesteT3 from './PageTest3.vue'    
   import { Quasar } from 'quasar'
   import quasarUserOptions from './quasar-user-options'
-  import { ref } from 'vue'  
+  import { ref } from 'vue'
+  import  LoginN from './LoginForm.vue'  
     
   export default {
     name: "app",
@@ -251,7 +257,11 @@
     data () { 
         return{
           C: "",
-          text: ""
+          text: "",
+          cond: "",
+          cond2:"",
+          sinal:"",
+          LoginName: "Denis"
         }
     },    
 
@@ -270,14 +280,43 @@
       }, 
       TesteClick2() {
         createApp(TesteT2).use(Quasar, quasarUserOptions).mount('#app')
-      },           
+      },  
+      TesteClick3() {
+        createApp(TesteT3).use(Quasar, quasarUserOptions).mount('#app')
+      },         
+      TesteLabel() {
+        console.log(LoginN.prop);                
+        if (this.LoginName == "Denis") 
+          this.LoginName='Fabiano';//LoginN.prop;
+         else 
+          this.LoginName='Denis';
+      },      
 
       btnC(C) {
         if (C == "C") {
           this.text='';
-        }else{            this.text+=C
-            console.log(C, this.text);}
-
+          this.cond='';
+          this.sinal='';
+        }else if (C == "/" || C == "*"  || C == "-"  || C == "+" && this.text!="") {
+          this.cond=this.text;
+          this.sinal=C;
+          this.text='';
+        }else if (C == "=" && this.text!="") {
+          if (this.sinal == "/")
+            this.text=this.cond/this.text;
+          if (this.sinal == "*")
+            this.text=this.cond*this.text;            
+          if (this.sinal == "-")
+            this.text=this.cond-this.text;
+          if (this.sinal == "+")
+            this.text=parseFloat(this.cond)+parseFloat(this.text); 
+            
+          this.cond='';
+          this.sinal='';          
+        }else{
+          this.text+=C;
+          console.log(C, this.text);
+        }
       },
 
       onClick(e) {
@@ -393,5 +432,16 @@
   .buttons-column {
     width: 150px;
     justify-content: center;
+  }
+
+  .Side {
+    background: rgb(109, 48, 138);    
+    flex-grow: 0;
+    height: 35px;
+    font-size: 180%;
+    color: black;
+    opacity: 0.8;
+    text-align: right;
+    padding-right: 15px;
   }
   </style>
