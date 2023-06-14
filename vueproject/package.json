@@ -14,8 +14,7 @@
     "devextreme-vue": "22.1.6",
     "quasar": "^2.0.0",
     "vue": "^3.2.13",
-    "vue-youtube": "^1.4.0",
-    "vuex": "^4.0.0"
+    "vuex": "^4.0.2"
   },
   "devDependencies": {
     "@babel/core": "^7.12.16",

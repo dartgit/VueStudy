@@ -66,5 +66,5 @@ window.config = {
       stage0: true,
     },
   };
-  System.config(window.config);
+  //System.config(window.config);
   

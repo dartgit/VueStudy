@@ -46,8 +46,7 @@
       import quasarUserOptions from './quasar-user-options'    
       import { ref, onBeforeUnmount } from 'vue'
       import { useQuasar } from 'quasar' 
-      import store from './store'  
-      
+      import createStore  from './store'
       
     export default {
       setup () {
@@ -64,7 +63,7 @@
         const intervals = [ null, null, null ]
     
         function startComputing (id) {
-          console.log(this.$store);
+          console.log(createStore.state.LoginN);
           if (this.emailtxt==''){
             $q.notify({
                 message: 'Informe um e-mail!',
@@ -85,9 +84,9 @@
               clearInterval(intervals[ id ])
               progress.value[ id ].loading = false
               if (this.emailtxt=='fvzanqueta@hotmail.com' && this.password=='123987456'){
-                //this.$store.commit('setLoginN', 'Fabiano V');
-                
-                createApp(TelaPrinc).use(Quasar, quasarUserOptions, store).mount('#app')
+                createStore.commit('alterLogin', 'Fabiano V');
+                console.log(createStore.state.LoginN);
+                createApp(TelaPrinc).use(Quasar, quasarUserOptions).mount('#app')
               } else {
                 $q.notify({
                 message: 'E-mail ou senha invalida!',
