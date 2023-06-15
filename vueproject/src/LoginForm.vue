@@ -1,6 +1,7 @@
 <template>
     <div class="lgin">
-    <div class="screen-1">
+
+      <q-form @submit="startComputing(2)" class="screen-1">
         <div class="email">
           <label for="email">E-mail</label>
           <div class="sec-2">
@@ -28,14 +29,15 @@
             </q-input>
           </div>
         </div>
+        <!--type="submit"-->
         <q-btn
           class="login"
           :loading="progress[2].loading"
           :percentage="progress[2].percentage"
           label="Login"
           @click="startComputing(2)"
-        />    
-      </div>  
+        /> 
+      </q-form>           
     </div>
     </template>
     
@@ -58,8 +60,6 @@
           { loading: false, percentage: 0 }
         ])
     
-    
-    
         const intervals = [ null, null, null ]
     
         function startComputing (id) {
@@ -73,7 +73,7 @@
                 message: 'Informe uma senha!',
                 color: 'red'
               })
-          }else{
+          } else {
           progress.value[ id ].loading = true
           progress.value[ id ].percentage = 0
     
