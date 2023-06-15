@@ -63,7 +63,6 @@
         const intervals = [ null, null, null ]
     
         function startComputing (id) {
-          console.log(createStore.state.LoginN);
           if (this.emailtxt==''){
             $q.notify({
                 message: 'Informe um e-mail!',
@@ -84,9 +83,17 @@
               clearInterval(intervals[ id ])
               progress.value[ id ].loading = false
               if (this.emailtxt=='fvzanqueta@hotmail.com' && this.password=='123987456'){
-                createStore.commit('alterLogin', 'Fabiano V');
-                console.log(createStore.state.LoginN);
+                createStore.commit('alterLogin', 'Fabiano V.');
+                $q.notify({
+                message: 'Bem-Vindo '+createStore.state.LoginN,
+                color: 'green'});
                 createApp(TelaPrinc).use(Quasar, quasarUserOptions).mount('#app')
+              } else if (this.emailtxt=='dennis.rds@hotmail.com' && this.password=='123987456'){
+                createStore.commit('alterLogin', 'Denis R.');
+                $q.notify({
+                message: 'Bem-Vindo '+createStore.state.LoginN,
+                color: 'green'});                
+                createApp(TelaPrinc).use(Quasar, quasarUserOptions).mount('#app')                
               } else {
                 $q.notify({
                 message: 'E-mail ou senha invalida!',

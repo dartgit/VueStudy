@@ -1,6 +1,9 @@
 <template>
   <div>
-    <div class="Side"> {{ LoginName }} </div>
+    <div class="Side"> 
+      {{ LoginName }} 
+      <q-btn rounded size="sm" color=red icon="logout" @click="LogOut"/>
+    </div>
     <div class="buttons-demo">
       <div class="buttons">
         <div>
@@ -240,10 +243,12 @@
   import CalcQuasar from './CalcQuasar.vue'
   import TesteT from './PageTest.vue'  
   import TesteT2 from './PageTest2.vue'  
-  import TesteT3 from './PageTest3.vue'    
+  import TesteT3 from './PageTest3.vue'
+  import App from './LoginForm.vue'      
   import { Quasar } from 'quasar'
   import quasarUserOptions from './quasar-user-options'
   import { ref } from 'vue'
+  import createStore  from './store'
     
   export default {
     name: "app",
@@ -270,6 +275,10 @@
       }
     },
 
+    created () {
+      this.LoginName = createStore.state.LoginN;
+    },
+
     methods: {
       QuasarClick() {
         createApp(CalcQuasar).use(Quasar, quasarUserOptions).mount('#app')
@@ -282,14 +291,20 @@
       },  
       TesteClick3() {
         createApp(TesteT3).use(Quasar, quasarUserOptions).mount('#app')
-      },         
+      }, 
+      LogOut() {
+        createApp(App).use(createStore).use(Quasar, quasarUserOptions).mount('#app')
+      },              
       TesteLabel() {
         
         console.log();                
-        if (this.LoginName == "Denis") 
-          this.LoginName='Fabiano';//LoginN.prop;
-         else 
-          this.LoginName='Denis';
+        if (this.LoginName == "Denis R.") {
+          createStore.commit('alterLogin', 'Fabiano V.');
+          this.LoginName = createStore.state.LoginN;//'Fabiano';
+        } else {
+          createStore.commit('alterLogin', 'Denis R.');
+          this.LoginName = createStore.state.LoginN;//'Denis';
+        }  
       },      
 
       btnC(C) {
@@ -437,7 +452,7 @@
   .Side {
     background: rgb(109, 48, 138);    
     flex-grow: 0;
-    height: 35px;
+    height: 40px;
     font-size: 180%;
     color: black;
     opacity: 0.8;
