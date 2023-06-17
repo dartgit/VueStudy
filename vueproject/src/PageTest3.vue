@@ -46,7 +46,6 @@
         APIClick() {
         axios
         .get("https://randomuser.me/api/")
-        //.get("https://api.openweathermap.org/data/2.5/weather?lat=-23.631399&lon=-46.479774&appid=3150e15d344504e944355284f3832664")
         .then((res) => {
           //console.log(res.data)
           url.value = res.data.results[0].picture.large
