@@ -1,6 +1,5 @@
 <template>
     <div class="lgin">
-
       <q-form @submit="startComputing(2)" class="screen-1">
         <div class="email">
           <label for="email">E-mail</label>
@@ -32,10 +31,10 @@
         <!--type="submit"-->
         <q-btn
           class="login"
+          type="submit"
           :loading="progress[2].loading"
           :percentage="progress[2].percentage"
           label="Login"
-          @click="startComputing(2)"
         /> 
       </q-form>           
     </div>
@@ -63,6 +62,7 @@
         const intervals = [ null, null, null ]
     
         function startComputing (id) {
+          console.log('teste');
           if (this.emailtxt==''){
             $q.notify({
                 message: 'Informe um e-mail!',
@@ -76,7 +76,7 @@
           } else {
           progress.value[ id ].loading = true
           progress.value[ id ].percentage = 0
-    
+
           intervals[ id ] = setInterval(() => {
             progress.value[ id ].percentage += Math.floor(Math.random() * 8 + 10)
             if (progress.value[ id ].percentage >= 100) {
@@ -84,12 +84,14 @@
               progress.value[ id ].loading = false
               if (this.emailtxt=='fvzanqueta@hotmail.com' && this.password=='123987456'){
                 createStore.commit('alterLogin', 'Fabiano V.');
+                createStore.commit('alterLoginI','https://scontent.fcgh21-1.fna.fbcdn.net/v/t1.18169-9/11074587_702535033188475_8513073536182128188_n.jpg?_nc_cat=109&ccb=1-7&_nc_sid=09cbfe&_nc_eui2=AeFzbXr_4rEZXMg9M-c92RQLyavowaR7X1LJq-jBpHtfUhC2VSG6MDg-IxYR97dwikgtys0h6K6sUcfvm8VZc0QV&_nc_ohc=jHq484OkZoMAX-VxAuo&_nc_ht=scontent.fcgh21-1.fna&oh=00_AfBqvn21UInHiQbisVRZ7t_7-s_aw3CRGU0coNNvYECBoA&oe=64B26A37');
                 $q.notify({
                 message: 'Bem-Vindo '+createStore.state.LoginN,
                 color: 'green'});
                 createApp(TelaPrinc).use(Quasar, quasarUserOptions).mount('#app')
               } else if (this.emailtxt=='dennis.rds@hotmail.com' && this.password=='123987456'){
                 createStore.commit('alterLogin', 'Denis R.');
+                createStore.commit('alterLoginI','https://scontent.fcgh21-1.fna.fbcdn.net/v/t39.30808-6/310478933_2266637613492444_467116057370013632_n.jpg?_nc_cat=108&ccb=1-7&_nc_sid=09cbfe&_nc_eui2=AeFq-iQOCVte4iboL8vRoGrnQs_U3XKm3flCz9Tdcqbd-WhKHmio--NnSiTocvU6mePuDG4KlhzvE5Y9GHP9GNqZ&_nc_ohc=vWGE8J7E4JgAX-mNPRX&_nc_ht=scontent.fcgh21-1.fna&oh=00_AfBYPMsAzVbQsiXqeqK6nd_DPtM9XyxAv6g5JSF5m_2tLw&oe=6490EE21');
                 $q.notify({
                 message: 'Bem-Vindo '+createStore.state.LoginN,
                 color: 'green'});                

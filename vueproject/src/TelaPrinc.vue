@@ -1,6 +1,11 @@
 <template>
   <div>
-    <div class="Side"> 
+    <div class="Side">
+      <q-img
+          :src="LoginImg"
+          spinner-color="white"
+          style="height: 35px; max-width: 35px"
+        /> 
       {{ LoginName }} 
       <q-btn rounded size="sm" color=red icon="logout" @click="LogOut"/>
     </div>
@@ -222,6 +227,7 @@
           <q-btn color="deep-purple" label="Teste" @click="TesteClick"/>
           <q-btn color="deep-purple" label="Teste2" @click="TesteClick2"/>          
           <q-btn color="deep-purple" label="Teste3" @click="TesteClick3"/>                    
+          <q-btn color="deep-purple" label="Teste4" @click="TesteClick4"/>
           <q-btn color="deep-purple" label="Teste Login" @click="TesteLabel"/>                    
         </div>
       </div>
@@ -244,6 +250,7 @@
   import TesteT from './PageTest.vue'  
   import TesteT2 from './PageTest2.vue'  
   import TesteT3 from './PageTest3.vue'
+  import TesteT4 from './PageTest4.vue'  
   import App from './LoginForm.vue'      
   import { Quasar } from 'quasar'
   import quasarUserOptions from './quasar-user-options'
@@ -265,7 +272,8 @@
           cond: "",
           cond2:"",
           sinal:"",
-          LoginName: "Denis"
+          LoginName: "Denis",
+          LoginImg: "https://s2.glbimg.com/M3qwmOZ-0o9hpfsT2EJDdVCRRto=/0x0:620x320/1000x0/smart/filters:strip_icc()/i.s3.glbimg.com/v1/AUTH_08fbf48bc0524877943fe86e43087e7a/internal_photos/bs/2021/m/S/A850ieROGGpDNXNqxPXg/2011-11-18-wow-logo.jpg"
         }
     },    
 
@@ -277,6 +285,7 @@
 
     created () {
       this.LoginName = createStore.state.LoginN;
+      this.LoginImg  = createStore.state.LoginI;
     },
 
     methods: {
@@ -292,6 +301,9 @@
       TesteClick3() {
         createApp(TesteT3).use(Quasar, quasarUserOptions).mount('#app')
       }, 
+      TesteClick4() {
+        createApp(TesteT4).use(Quasar, quasarUserOptions).mount('#app')
+      },      
       LogOut() {
         createApp(App).use(createStore).use(Quasar, quasarUserOptions).mount('#app')
       },              
@@ -300,10 +312,14 @@
         console.log();                
         if (this.LoginName == "Denis R.") {
           createStore.commit('alterLogin', 'Fabiano V.');
+          createStore.commit('alterLoginI','https://scontent.fcgh21-1.fna.fbcdn.net/v/t1.18169-9/11074587_702535033188475_8513073536182128188_n.jpg?_nc_cat=109&ccb=1-7&_nc_sid=09cbfe&_nc_eui2=AeFzbXr_4rEZXMg9M-c92RQLyavowaR7X1LJq-jBpHtfUhC2VSG6MDg-IxYR97dwikgtys0h6K6sUcfvm8VZc0QV&_nc_ohc=jHq484OkZoMAX-VxAuo&_nc_ht=scontent.fcgh21-1.fna&oh=00_AfBqvn21UInHiQbisVRZ7t_7-s_aw3CRGU0coNNvYECBoA&oe=64B26A37');          
           this.LoginName = createStore.state.LoginN;//'Fabiano';
+          this.LoginImg  = createStore.state.LoginI;
         } else {
           createStore.commit('alterLogin', 'Denis R.');
+          createStore.commit('alterLoginI','https://scontent.fcgh21-1.fna.fbcdn.net/v/t39.30808-6/310478933_2266637613492444_467116057370013632_n.jpg?_nc_cat=108&ccb=1-7&_nc_sid=09cbfe&_nc_eui2=AeFq-iQOCVte4iboL8vRoGrnQs_U3XKm3flCz9Tdcqbd-WhKHmio--NnSiTocvU6mePuDG4KlhzvE5Y9GHP9GNqZ&_nc_ohc=vWGE8J7E4JgAX-mNPRX&_nc_ht=scontent.fcgh21-1.fna&oh=00_AfBYPMsAzVbQsiXqeqK6nd_DPtM9XyxAv6g5JSF5m_2tLw&oe=6490EE21');          
           this.LoginName = createStore.state.LoginN;//'Denis';
+          this.LoginImg  = createStore.state.LoginI;
         }  
       },      
 
