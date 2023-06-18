@@ -1,6 +1,7 @@
 <template>
   <div>
     <div class="Side">
+      {{ lTemperatura }} - {{ lCidade }}
       <q-img
           :src="LoginImg"
           spinner-color="white"
@@ -233,7 +234,7 @@
       </div>
     </div>
   </div>
-    
+  
   </template>
   
   <script>
@@ -256,6 +257,7 @@
   import quasarUserOptions from './quasar-user-options'
   import { ref } from 'vue'
   import createStore  from './store'
+  import axios from 'axios'
     
   export default {
     name: "app",
@@ -273,7 +275,9 @@
           cond2:"",
           sinal:"",
           LoginName: "Denis",
-          LoginImg: "https://s2.glbimg.com/M3qwmOZ-0o9hpfsT2EJDdVCRRto=/0x0:620x320/1000x0/smart/filters:strip_icc()/i.s3.glbimg.com/v1/AUTH_08fbf48bc0524877943fe86e43087e7a/internal_photos/bs/2021/m/S/A850ieROGGpDNXNqxPXg/2011-11-18-wow-logo.jpg"
+          LoginImg: "https://s2.glbimg.com/M3qwmOZ-0o9hpfsT2EJDdVCRRto=/0x0:620x320/1000x0/smart/filters:strip_icc()/i.s3.glbimg.com/v1/AUTH_08fbf48bc0524877943fe86e43087e7a/internal_photos/bs/2021/m/S/A850ieROGGpDNXNqxPXg/2011-11-18-wow-logo.jpg",
+          lTemperatura: "0 ºC",
+          lCidade: "Cidade"
         }
     },    
 
@@ -286,6 +290,17 @@
     created () {
       this.LoginName = createStore.state.LoginN;
       this.LoginImg  = createStore.state.LoginI;
+      axios
+        .get("https://api.openweathermap.org/data/2.5/weather?lat=-23.631399&lon=-46.479774&appid={APIKEY}")
+        .then((res) => {
+          //console.log(res.data)
+          this.lTemperatura = (res.data.main.temp - 273.15)+" ºC"
+          this.lTemperatura = this.lTemperatura.replace(".",",")
+          this.lTemperatura = this.lTemperatura.substring(0,5)
+          this.lTemperatura = this.lTemperatura+" ºC"
+          this.lCidade = res.data.name
+        })
+        .catch((error) => {console.log(error)})
     },
 
     methods: {
@@ -469,7 +484,7 @@
     background: rgb(109, 48, 138);    
     flex-grow: 0;
     height: 40px;
-    font-size: 180%;
+    font-size: 160%;
     color: black;
     opacity: 0.8;
     text-align: right;
