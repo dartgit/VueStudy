@@ -228,11 +228,24 @@
           <q-btn color="deep-purple" label="Teste" @click="TesteClick"/>
           <q-btn color="deep-purple" label="Teste2" @click="TesteClick2"/>          
           <q-btn color="deep-purple" label="Teste3" @click="TesteClick3"/>                    
-          <q-btn color="deep-purple" label="Teste4" @click="TesteClick4"/>
+          <q-btn color="deep-purple" label="Teste4" @click="confirm = true"/>
           <q-btn color="deep-purple" label="Teste Login" @click="TesteLabel"/>                    
         </div>
       </div>
     </div>
+    <q-dialog v-model="confirm" persistent>
+      <q-card>
+        <q-card-section class="row items-center">
+          <q-avatar icon="warning" color="primary" text-color="white" />
+          <span class="q-ml-sm">Deseja abrir a Tela Teste4</span>
+        </q-card-section>
+
+        <q-card-actions align="right">
+          <q-btn flat label="Sim" color="primary" @click="TesteClick4" v-close-popup />
+          <q-btn flat label="Não" color="primary" v-close-popup />
+        </q-card-actions>
+      </q-card>
+    </q-dialog>    
   </div>
   
   </template>
@@ -283,7 +296,8 @@
 
     setup () {
       return {
-        calc: ref(false)
+        calc: ref(false),
+        confirm: ref(false)
       }
     },
 
