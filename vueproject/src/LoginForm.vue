@@ -91,7 +91,7 @@
                 createApp(TelaPrinc).use(Quasar, quasarUserOptions).mount('#app')
               } else if (this.emailtxt=='dennis.rds@hotmail.com' && this.password=='123987456'){
                 createStore.commit('alterLogin', 'Denis R.');
-                createStore.commit('alterLoginI','https://scontent.fcgh21-1.fna.fbcdn.net/v/t39.30808-6/310478933_2266637613492444_467116057370013632_n.jpg?_nc_cat=108&ccb=1-7&_nc_sid=09cbfe&_nc_eui2=AeFq-iQOCVte4iboL8vRoGrnQs_U3XKm3flCz9Tdcqbd-WhKHmio--NnSiTocvU6mePuDG4KlhzvE5Y9GHP9GNqZ&_nc_ohc=vWGE8J7E4JgAX-mNPRX&_nc_ht=scontent.fcgh21-1.fna&oh=00_AfBYPMsAzVbQsiXqeqK6nd_DPtM9XyxAv6g5JSF5m_2tLw&oe=6490EE21');
+                createStore.commit('alterLoginI','https://scontent.fcgh21-1.fna.fbcdn.net/v/t39.30808-6/310478933_2266637613492444_467116057370013632_n.jpg?_nc_cat=108&ccb=1-7&_nc_sid=09cbfe&_nc_eui2=AeFq-iQOCVte4iboL8vRoGrnQs_U3XKm3flCz9Tdcqbd-WhKHmio--NnSiTocvU6mePuDG4KlhzvE5Y9GHP9GNqZ&_nc_ohc=veG-hRRXNh4AX8BLaa-&_nc_ht=scontent.fcgh21-1.fna&oh=00_AfDJZOD7lrwbC8WVif5-JTxF5209zQnn6FgkEi0g_VmRIQ&oe=64A4B4A1');
                 $q.notify({
                 message: 'Bem-Vindo '+createStore.state.LoginN,
                 color: 'green'});                
