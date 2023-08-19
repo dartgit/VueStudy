@@ -62,7 +62,6 @@
         const intervals = [ null, null, null ]
     
         function startComputing (id) {
-          console.log('teste');
           if (this.emailtxt==''){
             $q.notify({
                 message: 'Informe um e-mail!',
@@ -84,14 +83,14 @@
               progress.value[ id ].loading = false
               if (this.emailtxt=='fvzanqueta@hotmail.com' && this.password=='123987456'){
                 createStore.commit('alterLogin', 'Fabiano V.');
-                createStore.commit('alterLoginI','https://scontent.fcgh21-1.fna.fbcdn.net/v/t1.18169-9/11074587_702535033188475_8513073536182128188_n.jpg?_nc_cat=109&ccb=1-7&_nc_sid=09cbfe&_nc_eui2=AeFzbXr_4rEZXMg9M-c92RQLyavowaR7X1LJq-jBpHtfUhC2VSG6MDg-IxYR97dwikgtys0h6K6sUcfvm8VZc0QV&_nc_ohc=jHq484OkZoMAX-VxAuo&_nc_ht=scontent.fcgh21-1.fna&oh=00_AfBqvn21UInHiQbisVRZ7t_7-s_aw3CRGU0coNNvYECBoA&oe=64B26A37');
+                createStore.commit('alterLoginI','./loginImage/Fabiano.png');
                 $q.notify({
                 message: 'Bem-Vindo '+createStore.state.LoginN,
                 color: 'green'});
                 createApp(TelaPrinc).use(Quasar, quasarUserOptions).mount('#app')
               } else if (this.emailtxt=='dennis.rds@hotmail.com' && this.password=='123987456'){
                 createStore.commit('alterLogin', 'Denis R.');
-                createStore.commit('alterLoginI','https://scontent.fcgh21-1.fna.fbcdn.net/v/t39.30808-6/310478933_2266637613492444_467116057370013632_n.jpg?_nc_cat=108&ccb=1-7&_nc_sid=09cbfe&_nc_eui2=AeFq-iQOCVte4iboL8vRoGrnQs_U3XKm3flCz9Tdcqbd-WhKHmio--NnSiTocvU6mePuDG4KlhzvE5Y9GHP9GNqZ&_nc_ohc=veG-hRRXNh4AX8BLaa-&_nc_ht=scontent.fcgh21-1.fna&oh=00_AfDJZOD7lrwbC8WVif5-JTxF5209zQnn6FgkEi0g_VmRIQ&oe=64A4B4A1');
+                createStore.commit('alterLoginI','./loginImage/Denis.png');
                 $q.notify({
                 message: 'Bem-Vindo '+createStore.state.LoginN,
                 color: 'green'});                
@@ -233,4 +232,26 @@
       button {
         cursor: pointer;
       }
+
+      .TituloPrincipal {
+        flex-grow: 0;
+        height: 30px;
+        font-size: 160%;
+        font-family: 'Times New Roman', Times, serif;
+        color: black;
+        opacity: 0.8;
+        text-align: center;
+        padding-right: 15px;
+      } 
+      
+      .CarouselPrincipal {
+        flex-grow: 0;
+        height: 30px;
+        font-size: 160%;
+        font-family: 'Times New Roman', Times, serif;
+        color: black;
+        opacity: 0.8;
+        text-align: center;
+        padding-right: 15px;
+      }      
     </style>  
