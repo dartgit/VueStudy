@@ -424,7 +424,7 @@ export default {
     this.LoginName = createStore.state.LoginN;
     this.LoginImg  = createStore.state.LoginI;
     axios
-    .get("https://api.openweathermap.org/data/2.5/weather?lat=-23.631399&lon=-46.479774&appid=3150e15d344504e944355284f3832664")
+    .get("https://api.openweathermap.org/data/2.5/weather?lat=-23.631399&lon=-46.479774&appid={{APIKEY}}")
       .then((res) => {
         //console.log(res.data)
         this.lTemperatura = (res.data.main.temp - 273.15)+" ºC"
