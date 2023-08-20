@@ -1,4 +1,5 @@
 <template>
+<div>
   <q-layout view="hHh lpR fFf" class="bg-grey-1">
     <q-header elevated class="bg-white text-grey-8" height-hint="64">
       <q-toolbar class="GNL__toolbar">
@@ -240,6 +241,22 @@
         -->
     </q-page-container>
   </q-layout>
+
+  <q-dialog v-model="confirm" persistent>
+        <q-card>
+          <q-card-section class="row items-center">
+            <q-avatar icon="warning" color="primary" text-color="white" />
+            <span class="q-ml-sm">Deseja Sair da Conta?</span>
+          </q-card-section>
+  
+          <q-card-actions align="right">
+            <q-btn flat label="Sim" color="primary" @click="LogOutClick" v-close-popup />
+            <q-btn flat label="Não" color="primary" v-close-popup />
+          </q-card-actions>
+        </q-card>
+  </q-dialog>  
+
+</div>
 </template>
 
 <script>
@@ -274,7 +291,7 @@ export default {
           sinal:"",
           LoginName: "Denis",
           LoginImg: "https://s2.glbimg.com/M3qwmOZ-0o9hpfsT2EJDdVCRRto=/0x0:620x320/1000x0/smart/filters:strip_icc()/i.s3.glbimg.com/v1/AUTH_08fbf48bc0524877943fe86e43087e7a/internal_photos/bs/2021/m/S/A850ieROGGpDNXNqxPXg/2011-11-18-wow-logo.jpg",
-          lTemperatura: "0 ºC",
+          lTemperatura: "0ºC",
           lCidade: "Cidade"          
         }
     },   
@@ -374,7 +391,7 @@ export default {
         createApp(TesteT3).use(Quasar, quasarUserOptions).mount('#app')
       }
       else if(lBtn == 'Log-Out'){
-        createApp(App).use(createStore).use(Quasar, quasarUserOptions).mount('#app')
+        this.confirm = true//createApp(App).use(createStore).use(Quasar, quasarUserOptions).mount('#app')
       }
       else if(lBtn == 'DevExtreme'){
         createApp(ExpDevX).use(Quasar, quasarUserOptions).mount('#app')
@@ -441,6 +458,10 @@ export default {
       createApp(TestePrinc).use(Quasar, quasarUserOptions).mount('#app')
     },
 
+    LogOutClick() {
+      createApp(App).use(createStore).use(Quasar, quasarUserOptions).mount('#app')
+    },
+
     onSubmit (evt) {
       console.log('@submit - do something here', evt)
       evt.target.submit()
@@ -473,6 +494,8 @@ export default {
           this.cond=this.text;
           this.sinal=C;
           this.text='';
+        }else if (C == "%") {
+          this.text=parseFloat(this.text)/100;
         }else if (C == "=" && this.text!="") {
           if (this.sinal == "/")
             this.text=this.cond/this.text;
@@ -485,6 +508,9 @@ export default {
             
           this.cond='';
           this.sinal='';          
+        }else if (C == "B") {
+          this.text=this.text.substring(0,this.text.length-1);
+          console.log(C, this.text);
         }else{
           this.text+=C;
           console.log(C, this.text);

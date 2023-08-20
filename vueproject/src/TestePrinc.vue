@@ -230,6 +230,7 @@
             <q-btn color="deep-purple" label="Teste3" @click="TesteClick3"/>                    
             <q-btn color="deep-purple" label="Teste4" @click="confirm = true"/>
             <q-btn color="deep-purple" label="Teste Login" @click="TesteLabel"/>                    
+            <q-btn color="deep-purple" icon="repartition" label="Voltar" @click="VoltarClick" />
           </div>
         </div>
       </div>
@@ -264,7 +265,8 @@
     import TesteT from './PageTest.vue'  
     import TesteT2 from './PageTest2.vue'  
     import TesteT3 from './PageTest3.vue'
-    import TesteT4 from './PageTest4.vue'  
+    import TesteT4 from './PageTest4.vue'
+    import TelaPrinc from './TelaPrinc.vue'  
     import App from './LoginForm.vue'      
     import { Quasar } from 'quasar'
     import quasarUserOptions from './quasar-user-options'
@@ -332,7 +334,10 @@
         }, 
         TesteClick4() {
           createApp(TesteT4).use(Quasar, quasarUserOptions).mount('#app')
-        },      
+        },   
+        VoltarClick() {
+        createApp(TelaPrinc).use(Quasar, quasarUserOptions).mount('#app')
+        },           
         LogOut() {
           createApp(App).use(createStore).use(Quasar, quasarUserOptions).mount('#app')
         },              
