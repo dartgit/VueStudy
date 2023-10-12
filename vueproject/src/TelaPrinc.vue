@@ -13,12 +13,7 @@
             class="q-mr-sm"
           />
 
-          <!--<q-toolbar-title v-if="$q.screen.gt.xs" shrink class="row items-center no-wrap">-->
           <q-toolbar-title shrink class="row items-center no-wrap">
-            <!--<img src="https://scontent.fcgh21-1.fna.fbcdn.net/v/t1.18169-9/11074587_702535033188475_8513073536182128188_n.jpg?_nc_cat=109&ccb=1-7&_nc_sid=09cbfe&_nc_eui2=AeFzbXr_4rEZXMg9M-c92RQLyavowaR7X1LJq-jBpHtfUhC2VSG6MDg-IxYR97dwikgtys0h6K6sUcfvm8VZc0QV&_nc_ohc=jHq484OkZoMAX-VxAuo&_nc_ht=scontent.fcgh21-1.fna&oh=00_AfBqvn21UInHiQbisVRZ7t_7-s_aw3CRGU0coNNvYECBoA&oe=64B26A37"
-          style="height: 35px; max-width: 35px">
-          <img src="https://scontent.fcgh21-1.fna.fbcdn.net/v/t39.30808-6/310478933_2266637613492444_467116057370013632_n.jpg?_nc_cat=108&ccb=1-7&_nc_sid=09cbfe&_nc_eui2=AeFq-iQOCVte4iboL8vRoGrnQs_U3XKm3flCz9Tdcqbd-WhKHmio--NnSiTocvU6mePuDG4KlhzvE5Y9GHP9GNqZ&_nc_ohc=vWGE8J7E4JgAX-mNPRX&_nc_ht=scontent.fcgh21-1.fna&oh=00_AfBYPMsAzVbQsiXqeqK6nd_DPtM9XyxAv6g5JSF5m_2tLw&oe=6490EE21"
-          style="height: 35px; max-width: 35px">-->
             <img
               src="@/assets/logo.png"
               style="height: 35px; max-width: 35px"
@@ -28,69 +23,6 @@
 
           <q-space />
 
-          <!--
-        <q-input class="GNL__toolbar-input" outlined dense v-model="search" color="bg-grey-7 shadow-1" placeholder="Search for topics, locations & sources">
-          <template v-slot:prepend>
-            <q-icon v-if="search === ''" name="search" />
-            <q-icon v-else name="clear" class="cursor-pointer" @click="search = ''" />
-          </template>
-          <template v-slot:append>
-            <q-btn
-              flat
-              dense
-              round
-              aria-label="Menu"
-              icon="arrow_drop_down"
-            >
-              <q-menu anchor="bottom end" self="top end">
-                <div class="q-pa-md" style="width: 400px">
-                  <div class="text-body2 text-grey q-mb-md">
-                    Narrow your search results
-                  </div>
-
-                  <div class="row items-center">
-                    <div class="col-3 text-subtitle2 text-grey">
-                      Exact phrase
-                    </div>
-                    <div class="col-9 q-pl-md">
-                      <q-input dense v-model="exactPhrase" />
-                    </div>
-
-                    <div class="col-3 text-subtitle2 text-grey">
-                      Has words
-                    </div>
-                    <div class="col-9 q-pl-md">
-                      <q-input dense v-model="hasWords" />
-                    </div>
-
-                    <div class="col-3 text-subtitle2 text-grey">
-                      Exclude words
-                    </div>
-                    <div class="col-9 q-pl-md">
-                      <q-input dense v-model="excludeWords" />
-                    </div>
-
-                    <div class="col-3 text-subtitle2 text-grey">
-                      Website
-                    </div>
-                    <div class="col-9 q-pl-md">
-                      <q-input dense v-model="byWebsite" />
-                    </div>
-
-                    <div class="col-12 q-pt-lg row justify-end">
-                      <q-btn flat dense no-caps color="grey-7" size="md" style="min-width: 68px;" label="Search" v-close-popup />
-                      <q-btn flat dense no-caps color="grey-7" size="md" style="min-width: 68px;" @click="onClear" label="Clear" v-close-popup />
-                    </div>
-                  </div>
-                </div>
-              </q-menu>
-            </q-btn>
-          </template>
-        </q-input>
-
-        <q-space />
-        -->
-
           <div class="q-gutter-sm row items-center no-wrap">
             <a
               class="GNL__drawer-footer-link"
@@ -98,7 +30,6 @@
               @click="GMapsClick()"
               >{{ lTemperatura }} - {{ lCidade }}</a
             >
-            <!--<q-btn v-if="$q.screen.gt.sm" round dense flat color="text-grey-7" icon="calculate" @click="calc = true">-->
             <q-btn
               round
               dense
@@ -112,163 +43,7 @@
             <q-dialog v-model="calc" persistent>
               <q-card>
                 <q-card-section>
-                  <div class="buttons-columnq">
-                    <div class="column-headerq">Calculadora</div>
-                  </div>
-                  <div class="buttons-row">
-                    <div>
-                      <q-input rounded outlined v-model="text" />
-                    </div>
-                    <div class="q-pa-md q-gutter-sm">
-                      <q-btn
-                        round
-                        color="orange"
-                        text-color="black"
-                        label="C"
-                        @click="btnC('C')"
-                      ></q-btn>
-                      <q-btn
-                        round
-                        color="orange"
-                        text-color="black"
-                        label="B"
-                        @click="btnC('B')"
-                      ></q-btn>
-                      <q-btn
-                        round
-                        color="orange"
-                        text-color="black"
-                        label="%"
-                        @click="btnC('%')"
-                      ></q-btn>
-                      <q-btn
-                        round
-                        color="orange"
-                        text-color="black"
-                        label="/"
-                        @click="btnC('/')"
-                      ></q-btn>
-                    </div>
-                    <div class="q-pa-md q-gutter-sm">
-                      <q-btn
-                        round
-                        color="blue"
-                        text-color="black"
-                        label="7"
-                        @click="btnC('7')"
-                      ></q-btn>
-                      <q-btn
-                        round
-                        color="blue"
-                        text-color="black"
-                        label="8"
-                        @click="btnC('8')"
-                      ></q-btn>
-                      <q-btn
-                        round
-                        color="blue"
-                        text-color="black"
-                        label="9"
-                        @click="btnC('9')"
-                      ></q-btn>
-                      <q-btn
-                        round
-                        color="orange"
-                        text-color="black"
-                        label="*"
-                        @click="btnC('*')"
-                      ></q-btn>
-                    </div>
-                    <div class="q-pa-md q-gutter-sm">
-                      <q-btn
-                        round
-                        color="blue"
-                        text-color="black"
-                        label="4"
-                        @click="btnC('4')"
-                      ></q-btn>
-                      <q-btn
-                        round
-                        color="blue"
-                        text-color="black"
-                        label="5"
-                        @click="btnC('5')"
-                      ></q-btn>
-                      <q-btn
-                        round
-                        color="blue"
-                        text-color="black"
-                        label="6"
-                        @click="btnC('6')"
-                      ></q-btn>
-                      <q-btn
-                        round
-                        color="orange"
-                        text-color="black"
-                        label="-"
-                        @click="btnC('-')"
-                      ></q-btn>
-                    </div>
-                    <div class="q-pa-md q-gutter-sm">
-                      <q-btn
-                        round
-                        color="blue"
-                        text-color="black"
-                        label="1"
-                        @click="btnC('1')"
-                      ></q-btn>
-                      <q-btn
-                        round
-                        color="blue"
-                        text-color="black"
-                        label="2"
-                        @click="btnC('2')"
-                      ></q-btn>
-                      <q-btn
-                        round
-                        color="blue"
-                        text-color="black"
-                        label="3"
-                        @click="btnC('3')"
-                      ></q-btn>
-                      <q-btn
-                        round
-                        color="orange"
-                        text-color="black"
-                        label="+"
-                        @click="btnC('+')"
-                      ></q-btn>
-                    </div>
-                    <div class="q-pa-md q-gutter-sm">
-                      <q-btn
-                        round
-                        color="blue"
-                        text-color="black"
-                        label=""
-                      ></q-btn>
-                      <q-btn
-                        round
-                        color="blue"
-                        text-color="black"
-                        label="0"
-                        @click="btnC('0')"
-                      ></q-btn>
-                      <q-btn
-                        round
-                        color="blue"
-                        text-color="black"
-                        label="."
-                        @click="btnC('.')"
-                      ></q-btn>
-                      <q-btn
-                        round
-                        color="orange"
-                        text-color="black"
-                        label="="
-                        @click="btnC('=')"
-                      ></q-btn>
-                    </div>
-                  </div>
+                  <CalcComp />
                 </q-card-section>
                 <q-card-actions align="right" width="50">
                   <q-btn
@@ -281,13 +56,6 @@
                 </q-card-actions>
               </q-card>
             </q-dialog>
-
-            <!--<q-btn round dense flat color="grey-8" icon="notifications">
-            <q-badge color="red" text-color="white" floating>
-              3
-            </q-badge>
-            <q-tooltip>Notifications</q-tooltip>
-          </q-btn>-->
 
             <q-btn round flat @click="TesteLabel">
               <q-avatar size="26px">
@@ -405,10 +173,6 @@
             />
           </q-carousel-slide>
         </q-carousel>
-
-        <!--
-          <iframe src=TelaPrinc width="1870" height="860">...</iframe>
-        -->
       </q-page-container>
     </q-layout>
 
@@ -436,18 +200,16 @@
 
 <script>
 import { ref } from "vue";
-//import { fasEarthAmericas, fasFlask, fasEarthAsia } from '@quasar/extras/fontawesome-v6'
 import { createApp } from "vue";
 import TestePrinc from "./TestePrinc.vue";
 import GMaps from "./GoogleMapLoader.vue";
-import ExpQuasar from "./ExpQuasar.vue";
-import ExpDevX from "./ExpDevX.vue";
+import QuasarNotify from "./QuasarNotify.vue";
 import GridDev from "./GridDev.vue";
-import TelaDenis from "./TelaDenis.vue";
-import CalcQuasar from "./CalcQuasar.vue";
-import TesteT from "./PageTest.vue";
-import TesteT2 from "./PageTest2.vue";
-import TesteT3 from "./PageTest3.vue";
+import FrameTest from "./FrameTest.vue";
+import CalcComp from "./CalcComp.vue";
+import CarouselQuasar from "./CarouselQuasar.vue";
+import CarouselDevX from "./CarouselDevX.vue";
+import ConsumoAPI from "./ConsumoAPI.vue";
 import App from "./LoginForm.vue";
 import { Quasar } from "quasar";
 import { useQuasar } from "quasar";
@@ -457,6 +219,9 @@ import axios from "axios";
 
 export default {
   name: "FormPringLayout",
+  components: {
+    CalcComp,
+  },
 
   data() {
     return {
@@ -517,27 +282,15 @@ export default {
       confirm: ref(false),
 
       links1: [
-        { icon: "web", text: "DevExtreme" },
-        { icon: "web", text: "Quasar" },
-        { icon: "web", text: "Grid" },
-        { icon: "domain", text: "Frame" },
-        { icon: "calculate", text: "Calculadora" },
+        { icon: "web", text: "Quasar Notify" },
+        { icon: "web", text: "Grid DevX" },
+        { icon: "domain", text: "Frame Teste" },
+        { icon: "api", text: "Consumo API" },
         { icon: "memory", text: "Teste Principal" },
-        { icon: "memory", text: "Teste" },
-        { icon: "memory", text: "Teste2" },
-        { icon: "memory", text: "Teste3" },
-        //{ icon: 'star_border', text: 'Favourites' },
-        //{ icon: 'search', text: 'Saved searches' }
+        { icon: "memory", text: "Carousel DevX" },
+        { icon: "memory", text: "Carousel Quasar" },
       ],
-      links2: [
-        //{ icon: 'flag', text: 'Canada' },
-        //{ icon: fasEarthAmericas, text: 'World' },
-        //{ icon: fasEarthAsia, text: 'Asia' },
-        //{ icon: 'place', text: 'Local' },
-        //{ icon: 'domain', text: 'Business' },
-        //{ icon: 'person', text: 'Mudar Login' },
-        { icon: "logout", text: "Log-Out" },
-      ],
+      links2: [{ icon: "logout", text: "Log-Out" }],
       links3: [
         { icon: "open_in_new", text: "World os Warcraft" },
         { icon: "open_in_new", text: "Pokemon" },
@@ -557,24 +310,22 @@ export default {
       sideBtn(lBtn) {
         if (lBtn == "Teste Principal") {
           createApp(TestePrinc).use(Quasar, quasarUserOptions).mount("#app");
-        } else if (lBtn == "Teste") {
-          createApp(TesteT).use(Quasar, quasarUserOptions).mount("#app");
-        } else if (lBtn == "Teste2") {
-          createApp(TesteT2).use(Quasar, quasarUserOptions).mount("#app");
-        } else if (lBtn == "Teste3") {
-          createApp(TesteT3).use(Quasar, quasarUserOptions).mount("#app");
+        } else if (lBtn == "Carousel Quasar") {
+          createApp(CarouselQuasar)
+            .use(Quasar, quasarUserOptions)
+            .mount("#app");
+        } else if (lBtn == "Carousel DevX") {
+          createApp(CarouselDevX).use(Quasar, quasarUserOptions).mount("#app");
+        } else if (lBtn == "Consumo API") {
+          createApp(ConsumoAPI).use(Quasar, quasarUserOptions).mount("#app");
         } else if (lBtn == "Log-Out") {
           this.confirm = true; //createApp(App).use(createStore).use(Quasar, quasarUserOptions).mount('#app')
-        } else if (lBtn == "DevExtreme") {
-          createApp(ExpDevX).use(Quasar, quasarUserOptions).mount("#app");
-        } else if (lBtn == "Quasar") {
-          createApp(ExpQuasar).use(Quasar, quasarUserOptions).mount("#app");
-        } else if (lBtn == "Grid") {
+        } else if (lBtn == "Quasar Notify") {
+          createApp(QuasarNotify).use(Quasar, quasarUserOptions).mount("#app");
+        } else if (lBtn == "Grid DevX") {
           createApp(GridDev).use(Quasar, quasarUserOptions).mount("#app");
-        } else if (lBtn == "Frame") {
-          createApp(TelaDenis).use(Quasar, quasarUserOptions).mount("#app");
-        } else if (lBtn == "Calculadora") {
-          createApp(CalcQuasar).use(Quasar, quasarUserOptions).mount("#app");
+        } else if (lBtn == "Frame Teste") {
+          createApp(FrameTest).use(Quasar, quasarUserOptions).mount("#app");
         } else if (lBtn == "World os Warcraft") {
           window.location.href = "https://worldofwarcraft.com/pt-br/";
         } else if (lBtn == "Pokemon") {
@@ -656,40 +407,6 @@ export default {
         this.LoginName = createStore.state.LoginN; //'Denis';
         this.LoginImg = createStore.state.LoginI;
         console.log(this.LoginImg);
-      }
-    },
-
-    btnC(C) {
-      if (C == "C") {
-        this.text = "";
-        this.cond = "";
-        this.sinal = "";
-      } else if (
-        C == "/" ||
-        C == "*" ||
-        C == "-" ||
-        (C == "+" && this.text != "")
-      ) {
-        this.cond = this.text;
-        this.sinal = C;
-        this.text = "";
-      } else if (C == "%") {
-        this.text = parseFloat(this.text) / 100;
-      } else if (C == "=" && this.text != "") {
-        if (this.sinal == "/") this.text = this.cond / this.text;
-        if (this.sinal == "*") this.text = this.cond * this.text;
-        if (this.sinal == "-") this.text = this.cond - this.text;
-        if (this.sinal == "+")
-          this.text = parseFloat(this.cond) + parseFloat(this.text);
-
-        this.cond = "";
-        this.sinal = "";
-      } else if (C == "B") {
-        this.text = this.text.substring(0, this.text.length - 1);
-        console.log(C, this.text);
-      } else {
-        this.text += C;
-        console.log(C, this.text);
       }
     },
   },
