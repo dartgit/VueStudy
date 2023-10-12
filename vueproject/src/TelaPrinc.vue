@@ -286,9 +286,9 @@ export default {
         { icon: "web", text: "Grid DevX" },
         { icon: "domain", text: "Frame Teste" },
         { icon: "api", text: "Consumo API" },
-        { icon: "memory", text: "Teste Principal" },
         { icon: "memory", text: "Carousel DevX" },
         { icon: "memory", text: "Carousel Quasar" },
+        { icon: "memory", text: "Teste Principal" },
       ],
       links2: [{ icon: "logout", text: "Log-Out" }],
       links3: [
