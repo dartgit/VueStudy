@@ -83,7 +83,7 @@ export default {
     const $q = useQuasar();
 
     return {
-      ativo: ref(false),
+      ativo: ref(true),
 
       NotifyClick() {
         $q.notify({

@@ -151,28 +151,33 @@
       </q-drawer>
 
       <q-page-container>
-        <router-view />
-        <br />
-        <div class="TituloPrincipal">Bem Vindo - {{ LoginName }}</div>
-        <br />
-        <q-carousel animated v-model="slide" arrows navigation infinite>
-          <q-carousel-slide
-            name="Wow"
-            img-src="https://s2.glbimg.com/M3qwmOZ-0o9hpfsT2EJDdVCRRto=/0x0:620x320/1000x0/smart/filters:strip_icc()/i.s3.glbimg.com/v1/AUTH_08fbf48bc0524877943fe86e43087e7a/internal_photos/bs/2021/m/S/A850ieROGGpDNXNqxPXg/2011-11-18-wow-logo.jpg"
-          />
-
-          <q-carousel-slide
-            name="Pokemon"
-            img-src="https://assets.nintendo.com/image/upload/ar_16:9,b_auto:border,c_lpad/b_white/f_auto/q_auto/dpr_1.0/c_scale,w_1200/ncom/software/switch/70010000043292/91e382e3e87726746dc714d3cab616a57ead6d797cff8c2f757b448534ce7cf4"
-          />
-
-          <q-carousel-slide name="spicy">
-            <q-video
-              class="absolute-full"
-              src="https://www.youtube.com/embed/Os_heh8vPfs"
+        <div v-if="container">
+          <QuasarNotify />
+        </div>
+        <div v-else>
+          <router-view />
+          <br />
+          <div class="TituloPrincipal">Bem Vindo - {{ LoginName }}</div>
+          <br />
+          <q-carousel animated v-model="slide" arrows navigation infinite>
+            <q-carousel-slide
+              name="Wow"
+              img-src="https://s2.glbimg.com/M3qwmOZ-0o9hpfsT2EJDdVCRRto=/0x0:620x320/1000x0/smart/filters:strip_icc()/i.s3.glbimg.com/v1/AUTH_08fbf48bc0524877943fe86e43087e7a/internal_photos/bs/2021/m/S/A850ieROGGpDNXNqxPXg/2011-11-18-wow-logo.jpg"
             />
-          </q-carousel-slide>
-        </q-carousel>
+
+            <q-carousel-slide
+              name="Pokemon"
+              img-src="https://assets.nintendo.com/image/upload/ar_16:9,b_auto:border,c_lpad/b_white/f_auto/q_auto/dpr_1.0/c_scale,w_1200/ncom/software/switch/70010000043292/91e382e3e87726746dc714d3cab616a57ead6d797cff8c2f757b448534ce7cf4"
+            />
+
+            <q-carousel-slide name="spicy">
+              <q-video
+                class="absolute-full"
+                src="https://www.youtube.com/embed/Os_heh8vPfs"
+              />
+            </q-carousel-slide>
+          </q-carousel>
+        </div>
       </q-page-container>
     </q-layout>
 
@@ -221,6 +226,7 @@ export default {
   name: "FormPringLayout",
   components: {
     CalcComp,
+    QuasarNotify,
   },
 
   data() {
@@ -280,8 +286,10 @@ export default {
       byDate,
       calc: ref(false),
       confirm: ref(false),
+      container: ref(false),
 
       links1: [
+        { icon: "home", text: "Inicio" },
         { icon: "web", text: "Quasar Notify" },
         { icon: "web", text: "Grid DevX" },
         { icon: "domain", text: "Frame Teste" },
@@ -289,6 +297,7 @@ export default {
         { icon: "memory", text: "Carousel DevX" },
         { icon: "memory", text: "Carousel Quasar" },
         { icon: "memory", text: "Teste Principal" },
+        { icon: "arrow_forward", text: "Teste Container" },
       ],
       links2: [{ icon: "logout", text: "Log-Out" }],
       links3: [
@@ -319,13 +328,17 @@ export default {
         } else if (lBtn == "Consumo API") {
           createApp(ConsumoAPI).use(Quasar, quasarUserOptions).mount("#app");
         } else if (lBtn == "Log-Out") {
-          this.confirm = true; //createApp(App).use(createStore).use(Quasar, quasarUserOptions).mount('#app')
+          this.confirm = true;
         } else if (lBtn == "Quasar Notify") {
           createApp(QuasarNotify).use(Quasar, quasarUserOptions).mount("#app");
         } else if (lBtn == "Grid DevX") {
           createApp(GridDev).use(Quasar, quasarUserOptions).mount("#app");
         } else if (lBtn == "Frame Teste") {
           createApp(FrameTest).use(Quasar, quasarUserOptions).mount("#app");
+        } else if (lBtn == "Teste Container") {
+          this.container = true;
+        } else if (lBtn == "Inicio") {
+          this.container = false;
         } else if (lBtn == "World os Warcraft") {
           window.location.href = "https://worldofwarcraft.com/pt-br/";
         } else if (lBtn == "Pokemon") {
