@@ -79,18 +79,60 @@
             <q-item
               class="GNL__drawer-item"
               v-ripple
-              v-for="link in links1"
-              :key="link.text"
               clickable
-              @click="sideBtn(link.text)"
+              @click="sideBtn('Inicio')"
             >
               <q-item-section avatar>
-                <q-icon :name="link.icon" />
+                <q-icon name="home" />
               </q-item-section>
               <q-item-section>
-                <q-item-label>{{ link.text }}</q-item-label>
+                <q-item-label>Inicio</q-item-label>
               </q-item-section>
             </q-item>
+
+            <q-expansion-item
+              expand-separator
+              icon="receipt"
+              label="Abertura em Formulário"
+            >
+              <q-item
+                class="GNL__drawer-item"
+                v-ripple
+                v-for="link in links1"
+                :key="link.text"
+                clickable
+                @click="sideBtn(link.index)"
+              >
+                <q-item-section avatar>
+                  <q-icon :name="link.icon" />
+                </q-item-section>
+                <q-item-section>
+                  <q-item-label>{{ link.text }}</q-item-label>
+                </q-item-section>
+              </q-item>
+            </q-expansion-item>
+
+            <q-expansion-item
+              expand-separator
+              icon="arrow_forward"
+              label="Abertura em Container"
+            >
+              <q-item
+                class="GNL__drawer-item"
+                v-ripple
+                v-for="link in links4"
+                :key="link.text"
+                clickable
+                @click="sideBtn(link.index)"
+              >
+                <q-item-section avatar>
+                  <q-icon :name="link.icon" />
+                </q-item-section>
+                <q-item-section>
+                  <q-item-label>{{ link.text }}</q-item-label>
+                </q-item-section>
+              </q-item>
+            </q-expansion-item>
 
             <q-separator inset class="q-my-sm" />
 
@@ -100,7 +142,7 @@
               v-for="link in links3"
               :key="link.text"
               clickable
-              @click="sideBtn(link.text)"
+              @click="sideBtn(link.index)"
             >
               <q-item-section>
                 <q-item-label
@@ -117,7 +159,7 @@
               v-for="link in links2"
               :key="link.text"
               clickable
-              @click="sideBtn(link.text)"
+              @click="sideBtn(link.index)"
             >
               <q-item-section avatar>
                 <q-icon :name="link.icon" />
@@ -289,27 +331,34 @@ export default {
       container: ref(false),
 
       links1: [
-        { icon: "home", text: "Inicio" },
-        { icon: "web", text: "Quasar Notify" },
-        { icon: "web", text: "Grid DevX" },
-        { icon: "domain", text: "Frame Teste" },
-        { icon: "api", text: "Consumo API" },
-        { icon: "memory", text: "Carousel DevX" },
-        { icon: "memory", text: "Carousel Quasar" },
-        { icon: "memory", text: "Teste Principal" },
-        { icon: "arrow_forward", text: "Teste Container" },
+        { icon: "web", text: "Quasar Notify", index: "1" },
+        { icon: "web", text: "Grid DevX", index: "2" },
+        { icon: "domain", text: "Frame Teste", index: "3" },
+        { icon: "api", text: "Consumo API", index: "4" },
+        { icon: "memory", text: "Carousel DevX", index: "5" },
+        { icon: "memory", text: "Carousel Quasar", index: "6" },
+        { icon: "memory", text: "Teste Principal", index: "7" },
       ],
-      links2: [{ icon: "logout", text: "Log-Out" }],
+      links2: [{ icon: "logout", text: "Log-Out", index: "10" }],
       links3: [
-        { icon: "open_in_new", text: "World os Warcraft" },
-        { icon: "open_in_new", text: "Pokemon" },
-        { icon: "open_in_new", text: "Genshin" },
-        { icon: "open_in_new", text: "Twitch" },
-        { icon: "open_in_new", text: "Facebook" },
-        { icon: "open_in_new", text: "Youtube" },
-        { icon: "local_movies", text: "Netflix" },
-        { icon: "local_movies", text: "Prime" },
-        { icon: "local_movies", text: "HBO Max" },
+        { icon: "open_in_new", text: "World os Warcraft", index: "11" },
+        { icon: "open_in_new", text: "Pokemon", index: "12" },
+        { icon: "open_in_new", text: "Genshin", index: "13" },
+        { icon: "open_in_new", text: "Twitch", index: "14" },
+        { icon: "open_in_new", text: "Facebook", index: "15" },
+        { icon: "open_in_new", text: "Youtube", index: "16" },
+        { icon: "local_movies", text: "Netflix", index: "17" },
+        { icon: "local_movies", text: "Prime", index: "18" },
+        { icon: "local_movies", text: "HBO Max", index: "19" },
+      ],
+      links4: [
+        { icon: "web", text: "Quasar Notify", index: "20" },
+        { icon: "web", text: "Grid DevX", index: "21" },
+        { icon: "domain", text: "Frame Teste", index: "22" },
+        { icon: "api", text: "Consumo API", index: "23" },
+        { icon: "memory", text: "Carousel DevX", index: "24" },
+        { icon: "memory", text: "Carousel Quasar", index: "25" },
+        { icon: "memory", text: "Teste Principal", index: "26" },
       ],
 
       onClear,
@@ -317,39 +366,39 @@ export default {
       toggleLeftDrawer,
 
       sideBtn(lBtn) {
-        if (lBtn == "Teste Principal") {
+        if (lBtn == "7") {
           createApp(TestePrinc).use(Quasar, quasarUserOptions).mount("#app");
-        } else if (lBtn == "Carousel Quasar") {
+        } else if (lBtn == "6") {
           createApp(CarouselQuasar)
             .use(Quasar, quasarUserOptions)
             .mount("#app");
-        } else if (lBtn == "Carousel DevX") {
+        } else if (lBtn == "5") {
           createApp(CarouselDevX).use(Quasar, quasarUserOptions).mount("#app");
-        } else if (lBtn == "Consumo API") {
+        } else if (lBtn == "4") {
           createApp(ConsumoAPI).use(Quasar, quasarUserOptions).mount("#app");
-        } else if (lBtn == "Log-Out") {
+        } else if (lBtn == "10") {
           this.confirm = true;
-        } else if (lBtn == "Quasar Notify") {
+        } else if (lBtn == "1") {
           createApp(QuasarNotify).use(Quasar, quasarUserOptions).mount("#app");
-        } else if (lBtn == "Grid DevX") {
+        } else if (lBtn == "2") {
           createApp(GridDev).use(Quasar, quasarUserOptions).mount("#app");
-        } else if (lBtn == "Frame Teste") {
+        } else if (lBtn == "3") {
           createApp(FrameTest).use(Quasar, quasarUserOptions).mount("#app");
-        } else if (lBtn == "Teste Container") {
+        } else if (lBtn == "20") {
           this.container = true;
         } else if (lBtn == "Inicio") {
           this.container = false;
-        } else if (lBtn == "World os Warcraft") {
+        } else if (lBtn == "11") {
           window.location.href = "https://worldofwarcraft.com/pt-br/";
-        } else if (lBtn == "Pokemon") {
+        } else if (lBtn == "12") {
           window.location.href = "https://www.ligapokemon.com.br/?view=home";
-        } else if (lBtn == "Genshin") {
+        } else if (lBtn == "13") {
           window.location.href = "https://genshin.mihoyo.com/pt/home";
-        } else if (lBtn == "Twitch") {
+        } else if (lBtn == "14") {
           window.location.href = "https://www.twitch.tv/directory";
-        } else if (lBtn == "Facebook") {
+        } else if (lBtn == "15") {
           window.location.href = "https://www.facebook.com/gaming/feed/";
-        } else if (lBtn == "Youtube") {
+        } else if (lBtn == "16") {
           window.location.href = "https://www.youtube.com/gaming";
         } else {
           $q.notify({
