@@ -201,24 +201,26 @@
           <br />
           <div class="TituloPrincipal">Bem Vindo - {{ LoginName }}</div>
           <br />
-          <q-carousel animated v-model="slide" arrows navigation infinite>
-            <q-carousel-slide
-              name="Wow"
-              img-src="https://s2.glbimg.com/M3qwmOZ-0o9hpfsT2EJDdVCRRto=/0x0:620x320/1000x0/smart/filters:strip_icc()/i.s3.glbimg.com/v1/AUTH_08fbf48bc0524877943fe86e43087e7a/internal_photos/bs/2021/m/S/A850ieROGGpDNXNqxPXg/2011-11-18-wow-logo.jpg"
-            />
-
-            <q-carousel-slide
-              name="Pokemon"
-              img-src="https://assets.nintendo.com/image/upload/ar_16:9,b_auto:border,c_lpad/b_white/f_auto/q_auto/dpr_1.0/c_scale,w_1200/ncom/software/switch/70010000043292/91e382e3e87726746dc714d3cab616a57ead6d797cff8c2f757b448534ce7cf4"
-            />
-
-            <q-carousel-slide name="spicy">
-              <q-video
-                class="absolute-full"
-                src="https://www.youtube.com/embed/Os_heh8vPfs"
+          <div class="GNL__CentralizarCarousel">
+            <q-carousel animated v-model="slide" arrows navigation infinite>
+              <q-carousel-slide
+                name="Wow"
+                img-src="https://s2.glbimg.com/M3qwmOZ-0o9hpfsT2EJDdVCRRto=/0x0:620x320/1000x0/smart/filters:strip_icc()/i.s3.glbimg.com/v1/AUTH_08fbf48bc0524877943fe86e43087e7a/internal_photos/bs/2021/m/S/A850ieROGGpDNXNqxPXg/2011-11-18-wow-logo.jpg"
               />
-            </q-carousel-slide>
-          </q-carousel>
+
+              <q-carousel-slide
+                name="Pokemon"
+                img-src="https://assets.nintendo.com/image/upload/ar_16:9,b_auto:border,c_lpad/b_white/f_auto/q_auto/dpr_1.0/c_scale,w_1200/ncom/software/switch/70010000043292/91e382e3e87726746dc714d3cab616a57ead6d797cff8c2f757b448534ce7cf4"
+              />
+
+              <q-carousel-slide name="spicy">
+                <q-video
+                  class="absolute-full"
+                  src="https://www.youtube.com/embed/Os_heh8vPfs"
+                />
+              </q-carousel-slide>
+            </q-carousel>
+          </div>
         </div>
       </q-page-container>
     </q-layout>
@@ -477,6 +479,10 @@ export default {
 
 <style lang="sass">
 .GNL
+  &__CentralizarCarousel
+    width: 750px
+    margin-left: auto
+    margin-right: auto
 
   &__toolbar
     height: 64px
