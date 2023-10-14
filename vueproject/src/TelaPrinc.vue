@@ -194,7 +194,27 @@
 
       <q-page-container>
         <div v-if="container">
-          <QuasarNotify />
+          <div v-if="comp == '20'">
+            <QuasarNotify />
+          </div>
+          <div v-else-if="comp == '21'">
+            <GridDev />
+          </div>
+          <div v-else-if="comp == '22'">
+            <FrameTest />
+          </div>
+          <div v-else-if="comp == '23'">
+            <ConsumoAPI />
+          </div>
+          <div v-else-if="comp == '24'">
+            <CarouselDevX />
+          </div>
+          <div v-else-if="comp == '25'">
+            <CarouselQuasar />
+          </div>
+          <div v-else-if="comp == '26'">
+            <TestePrinc />
+          </div>
         </div>
         <div v-else>
           <router-view />
@@ -271,6 +291,12 @@ export default {
   components: {
     CalcComp,
     QuasarNotify,
+    GridDev,
+    FrameTest,
+    ConsumoAPI,
+    CarouselDevX,
+    CarouselQuasar,
+    TestePrinc,
   },
 
   data() {
@@ -331,6 +357,7 @@ export default {
       calc: ref(false),
       confirm: ref(false),
       container: ref(false),
+      comp: ref("20"),
 
       links1: [
         { icon: "web", text: "Quasar Notify", index: "1" },
@@ -388,6 +415,25 @@ export default {
           createApp(FrameTest).use(Quasar, quasarUserOptions).mount("#app");
         } else if (lBtn == "20") {
           this.container = true;
+          this.comp = "20";
+        } else if (lBtn == "21") {
+          this.container = true;
+          this.comp = "21";
+        } else if (lBtn == "22") {
+          this.container = true;
+          this.comp = "22";
+        } else if (lBtn == "23") {
+          this.container = true;
+          this.comp = "23";
+        } else if (lBtn == "24") {
+          this.container = true;
+          this.comp = "24";
+        } else if (lBtn == "25") {
+          this.container = true;
+          this.comp = "25";
+        } else if (lBtn == "26") {
+          this.container = true;
+          this.comp = "26";
         } else if (lBtn == "Inicio") {
           this.container = false;
         } else if (lBtn == "11") {
