@@ -57,6 +57,32 @@
               </q-card>
             </q-dialog>
 
+            <q-dialog v-model="popVideo">
+              <q-card>
+                <q-card-section>
+                  <div class="GNL__PopPainel">
+                    <q-video
+                      class="absolute-full"
+                      src="https://www.youtube.com/embed/Os_heh8vPfs"
+                    />
+                  </div>
+                </q-card-section>
+              </q-card>
+            </q-dialog>
+
+            <q-dialog v-model="popImagem">
+              <q-card>
+                <q-card-section>
+                  <div class="GNL__PopPainel">
+                    <q-img
+                      class="absolute-full"
+                      src="https://s2.glbimg.com/M3qwmOZ-0o9hpfsT2EJDdVCRRto=/0x0:620x320/1000x0/smart/filters:strip_icc()/i.s3.glbimg.com/v1/AUTH_08fbf48bc0524877943fe86e43087e7a/internal_photos/bs/2021/m/S/A850ieROGGpDNXNqxPXg/2011-11-18-wow-logo.jpg"
+                    />
+                  </div>
+                </q-card-section>
+              </q-card>
+            </q-dialog>
+
             <q-btn round flat @click="TesteLabel">
               <q-avatar size="26px">
                 <img src="./loginImage/Fabiano.png" />
@@ -133,6 +159,24 @@
                 </q-item-section>
               </q-item>
             </q-expansion-item>
+
+            <q-separator inset class="q-my-sm" />
+
+            <q-item
+              class="GNL__drawer-item"
+              v-ripple
+              v-for="link in links5"
+              :key="link.text"
+              clickable
+              @click="sideBtn(link.index)"
+            >
+              <q-item-section avatar>
+                <q-icon :name="link.icon" />
+              </q-item-section>
+              <q-item-section>
+                <q-item-label>{{ link.text }}</q-item-label>
+              </q-item-section>
+            </q-item>
 
             <q-separator inset class="q-my-sm" />
 
@@ -285,6 +329,7 @@ import { useQuasar } from "quasar";
 import quasarUserOptions from "./quasar-user-options";
 import createStore from "./store";
 import axios from "axios";
+import testeAudio from "@/assets/audios/ohhh.mp3";
 
 export default {
   name: "FormPringLayout",
@@ -357,6 +402,8 @@ export default {
       calc: ref(false),
       confirm: ref(false),
       container: ref(false),
+      popVideo: ref(false),
+      popImagem: ref(false),
       comp: ref("20"),
 
       links1: [
@@ -388,6 +435,11 @@ export default {
         { icon: "memory", text: "Carousel DevX", index: "24" },
         { icon: "memory", text: "Carousel Quasar", index: "25" },
         { icon: "memory", text: "Teste Principal", index: "26" },
+      ],
+      links5: [
+        { icon: "slideshow", text: "Video", index: "27" },
+        { icon: "music_note", text: "Áudio", index: "28" },
+        { icon: "image", text: "Imagem", index: "29" },
       ],
 
       onClear,
@@ -434,6 +486,13 @@ export default {
         } else if (lBtn == "26") {
           this.container = true;
           this.comp = "26";
+        } else if (lBtn == "27") {
+          this.popVideo = true;
+        } else if (lBtn == "28") {
+          let audio = new Audio(testeAudio);
+          audio.play();
+        } else if (lBtn == "29") {
+          this.popImagem = true;
         } else if (lBtn == "Inicio") {
           this.container = false;
         } else if (lBtn == "11") {
@@ -525,6 +584,10 @@ export default {
 
 <style lang="sass">
 .GNL
+  &__PopPainel
+    width: 500px
+    height: 265px
+
   &__CentralizarCarousel
     width: 750px
     margin-left: auto
