@@ -1,24 +1,21 @@
-import { createStore } from 'vuex'
+import { createStore } from "vuex";
 
 const store = createStore({
   state: {
-    LoginN:'teste1',
-    LoginI:'./assets/logo.png'
+    LoginN: "teste1",
+    LoginI: "./assets/logo.png",
   },
-  getters: {
-  },
+  getters: {},
   mutations: {
     alterLogin(state, alterL) {
       state.LoginN = alterL;
     },
     alterLoginI(state, alterI) {
       state.LoginI = alterI;
-    }    
+    },
   },
-  actions: {
-  },
-  modules: {
-  }
+  actions: {},
+  modules: {},
 });
 
 export default store;

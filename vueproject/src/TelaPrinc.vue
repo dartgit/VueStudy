@@ -259,6 +259,9 @@
           <div v-else-if="comp == '26'">
             <TestePrinc />
           </div>
+          <div v-else-if="comp == '30'">
+            <SorteioComp />
+          </div>
         </div>
         <div v-else>
           <router-view />
@@ -323,6 +326,7 @@ import CalcComp from "./CalcComp.vue";
 import CarouselQuasar from "./CarouselQuasar.vue";
 import CarouselDevX from "./CarouselDevX.vue";
 import ConsumoAPI from "./ConsumoAPI.vue";
+import SorteioComp from "./SorteioComp.vue";
 import App from "./LoginForm.vue";
 import { Quasar } from "quasar";
 import { useQuasar } from "quasar";
@@ -341,6 +345,7 @@ export default {
     ConsumoAPI,
     CarouselDevX,
     CarouselQuasar,
+    SorteioComp,
     TestePrinc,
   },
 
@@ -435,6 +440,7 @@ export default {
         { icon: "memory", text: "Carousel DevX", index: "24" },
         { icon: "memory", text: "Carousel Quasar", index: "25" },
         { icon: "memory", text: "Teste Principal", index: "26" },
+        { icon: "memory", text: "Sorteio", index: "30" },
       ],
       links5: [
         { icon: "slideshow", text: "Video", index: "27" },
@@ -486,6 +492,9 @@ export default {
         } else if (lBtn == "26") {
           this.container = true;
           this.comp = "26";
+        } else if (lBtn == "30") {
+          this.container = true;
+          this.comp = "30";
         } else if (lBtn == "27") {
           this.popVideo = true;
         } else if (lBtn == "28") {
