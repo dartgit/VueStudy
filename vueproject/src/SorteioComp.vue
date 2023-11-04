@@ -30,8 +30,6 @@
         icon="star_rate"
         label="Sortear"
         color="blue"
-        :loading="progress[2].loading"
-        :percentage="progress[2].percentage"
         @click="Sorteio()"
       />
     </div>
@@ -39,10 +37,19 @@
     <q-dialog v-model="confirm" persistent>
       <q-card>
         <q-card-section class="row items-center">
-          <div class="NomeSort">O Sorteado Foi: {{ NomeSorteado }}</div>
+          <LdScreen v-if="isLdScreen"></LdScreen>
+          <div v-if="!isLdScreen" class="NomeSort">
+            O Sorteado Foi: {{ NomeSorteado }}
+          </div>
         </q-card-section>
         <q-card-actions align="right">
-          <q-btn flat label="Sair" color="primary" v-close-popup />
+          <q-btn
+            flat
+            label="Sair"
+            color="primary"
+            v-close-popup
+            @click="ResetLD()"
+          />
         </q-card-actions>
       </q-card>
     </q-dialog>
@@ -50,7 +57,8 @@
 </template>
 
 <script>
-import { ref, onBeforeUnmount } from "vue";
+import { ref } from "vue";
+import LdScreen from "./LdScreen.vue";
 
 export default {
   data() {
@@ -60,41 +68,12 @@ export default {
       text: "",
       NomeSorteado: "",
       confirm: ref(false),
+      isLdScreen: true,
     };
   },
 
-  setup() {
-    const progress = ref([
-      { loading: false, percentage: 0 },
-      { loading: false, percentage: 0 },
-      { loading: false, percentage: 0 },
-    ]);
-
-    const intervals = [null, null, null];
-
-    function Sorteio2(id) {
-      progress.value[id].loading = true;
-      progress.value[id].percentage = 0;
-
-      intervals[id] = setInterval(() => {
-        progress.value[id].percentage += Math.floor(Math.random() * 8 + 50);
-        if (progress.value[id].percentage >= 100) {
-          clearInterval(intervals[id]);
-          progress.value[id].loading = false;
-        }
-      }, 700);
-    }
-
-    onBeforeUnmount(() => {
-      intervals.forEach((val) => {
-        clearInterval(val);
-      });
-    });
-
-    return {
-      progress,
-      Sorteio2,
-    };
+  components: {
+    LdScreen,
   },
 
   methods: {
@@ -113,7 +92,14 @@ export default {
       this.NomesLista.pop();
     },
 
+    ResetLD() {
+      this.isLdScreen = true;
+    },
+
     Sorteio() {
+      setTimeout(() => {
+        this.isLdScreen = false;
+      }, 2000);
       this.NomeSorteado =
         this.NomesLista[Math.ceil(Math.random() * this.NomesLista.length - 1)];
       this.confirm = true;
