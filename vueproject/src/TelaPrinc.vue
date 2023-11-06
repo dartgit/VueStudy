@@ -440,7 +440,7 @@ export default {
         { icon: "memory", text: "Carousel DevX", index: "24" },
         { icon: "memory", text: "Carousel Quasar", index: "25" },
         { icon: "memory", text: "Teste Principal", index: "26" },
-        { icon: "memory", text: "Sorteio", index: "30" },
+        { icon: "star_rate", text: "Sorteio", index: "30" },
       ],
       links5: [
         { icon: "slideshow", text: "Video", index: "27" },
