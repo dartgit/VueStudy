@@ -1,7 +1,30 @@
 <template>
   <div class="CentralizaGrid">
+    <div>
+      <q-input rounded outlined clearable label="Nome" v-model="txtNome" />
+      <q-input
+        rounded
+        outlined
+        clearable
+        label="Sobrenome"
+        v-model="txtSNome"
+      />
+    </div>
+    <div class="q-pa-md q-gutter-sm">
+      <q-btn
+        rounded
+        type="submit"
+        icon="save"
+        color="green"
+        @click="InsereNome()"
+      />
+      <q-btn rounded icon="delete" color="red" @click="Limpar()" />
+    </div>
+
     <DxDataGrid
+      v-if="reconstruir"
       id="gridContainer"
+      ref="gridContainer"
       :data-source="employees"
       :allow-column-reordering="true"
       :show-column-lines="true"
@@ -69,6 +92,7 @@ import { employees } from "./dadosgrid.js";
 import { Workbook } from "exceljs";
 import { saveAs } from "file-saver-es";
 import { exportDataGrid } from "devextreme/excel_exporter";
+import { ref } from "vue";
 
 export default {
   components: {
@@ -81,6 +105,12 @@ export default {
     DxSearchPanel,
     DxExport,
     DxSelection,
+  },
+
+  computed: {
+    gridContainer() {
+      return this.$refs["gridContainer"].instance;
+    },
   },
 
   setup() {
@@ -169,7 +199,48 @@ export default {
   data() {
     return {
       employees,
+      txtNome: "",
+      txtSNome: "",
+      reconstruir: ref(true),
     };
+  },
+
+  methods: {
+    InsereNome() {
+      if (this.txtNome != "") {
+        let NC = {
+          ID: this.employees.length,
+          FirstName: this.txtNome,
+          LastName: this.txtSNome,
+          Prefix: "",
+          Position: "",
+          Picture: "",
+          BirthDate: "",
+          HireDate: "",
+          Notes: "",
+          Address: "",
+        };
+        this.employees.push(NC);
+        //console.log(this.NomesTeste);
+      }
+
+      this.txtNome = "";
+      this.txtSNome = "";
+      this.reconstruir = false;
+      setTimeout(() => {
+        this.reconstruir = true;
+      }, 1);
+
+      //this.$refs.gridContainer.selectionChanged();
+      //console.log(this.$refs.gridContainer);
+    },
+    Limpar() {
+      this.employees.pop();
+      this.reconstruir = false;
+      setTimeout(() => {
+        this.reconstruir = true;
+      }, 1);
+    },
   },
 };
 </script>
