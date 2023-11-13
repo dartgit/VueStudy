@@ -3,6 +3,7 @@
     <q-form @submit="InsereNome()">
       <div class="inputdiv">
         <q-input
+          ref="edtNome"
           rounded
           outlined
           clearable
@@ -72,6 +73,12 @@ export default {
     };
   },
 
+  computed: {
+    edtNome() {
+      return this.$refs["edtNome"].instance;
+    },
+  },
+
   components: {
     LdScreen,
   },
@@ -86,6 +93,8 @@ export default {
         }
       }
       this.text = "";
+      this.$refs.edtNome.focus();
+      //console.log(this.$refs.edtNome);
     },
 
     Limpar() {
