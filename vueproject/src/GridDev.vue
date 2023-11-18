@@ -1,6 +1,14 @@
 <template>
   <div class="CentralizaGrid">
-    <div>
+    <div class="q-gutter-y-md column">
+      <q-select
+        rounded
+        outlined
+        clearable
+        v-model="txtTitulo"
+        :options="TituloOpt"
+        label="Titulo"
+      />
       <q-input rounded outlined clearable label="Nome" v-model="txtNome" />
       <q-input
         rounded
@@ -9,16 +17,63 @@
         label="Sobrenome"
         v-model="txtSNome"
       />
+      <q-input rounded outlined clearable label="Cargo" v-model="txtCargo" />
+      <q-select
+        rounded
+        outlined
+        clearable
+        v-model="dtNasc"
+        label="Data de Nascimento"
+      >
+        <q-popup-proxy
+          @before-show="updateProxy"
+          cover
+          transition-show="scale"
+          transition-hide="scale"
+        >
+          <q-date v-model="dtNasc" minimal>
+            <div class="row items-center justify-end q-gutter-sm">
+              <q-btn label="Cancel" color="primary" flat v-close-popup />
+              <q-btn
+                label="OK"
+                color="primary"
+                flat
+                @click="save"
+                v-close-popup
+              />
+            </div>
+          </q-date>
+        </q-popup-proxy>
+      </q-select>
     </div>
     <div class="q-pa-md q-gutter-sm">
+      <q-btn
+        rounded
+        icon="add"
+        color="secondary"
+        @click="TesteGrid()"
+        v-if="(mostrar = false)"
+      >
+        <q-tooltip>Inserir</q-tooltip>
+      </q-btn>
+      <q-btn rounded icon="update" color="primary" @click="EditarGrid()">
+        <q-tooltip>Editar</q-tooltip>
+      </q-btn>
+      <q-btn rounded icon="delete" color="red" @click="Limpar()">
+        <q-tooltip>Excluir</q-tooltip>
+      </q-btn>
       <q-btn
         rounded
         type="submit"
         icon="save"
         color="green"
         @click="InsereNome()"
-      />
-      <q-btn rounded icon="delete" color="red" @click="Limpar()" />
+      >
+        <q-tooltip>Gravar</q-tooltip>
+      </q-btn>
+      <q-btn rounded icon="cancel" color="amber" @click="Cancelar()">
+        <q-tooltip>Cancelar</q-tooltip>
+      </q-btn>
     </div>
 
     <DxDataGrid
@@ -33,16 +88,10 @@
       :row-alternation-enabled="true"
       key-expr="ID"
       @exporting="onExporting"
+      @selection-changed="onSelectionChanged"
     >
       <DxSelection mode="multiple" />
       <DxExport :enabled="true" :allow-export-selected-data="true" />
-      <DxColumn
-        :width="100"
-        :allow-sorting="false"
-        data-field="Picture"
-        caption="Foto"
-        cell-template="cellTemplate"
-      />
       <DxColumn :width="120" data-field="Prefix" caption="Titulo" />
       <DxColumn :width="120" data-field="FirstName" caption="Nome" />
       <DxColumn :width="120" data-field="LastName" caption="Sobrenome" />
@@ -53,12 +102,7 @@
         caption="Data de Nascimento"
         data-type="date"
       />
-      <DxColumn
-        :width="100"
-        data-field="HireDate"
-        caption="Contratação"
-        data-type="date"
-      />
+
       <template #cellTemplate="{ data }">
         <img :src="data.value" />
       </template>
@@ -199,9 +243,15 @@ export default {
   data() {
     return {
       employees,
+      acaoSalvar: "Inserir",
       txtNome: "",
       txtSNome: "",
+      txtTitulo: "",
+      TituloOpt: ["Sr.", "Sra."],
+      txtCargo: "",
+      dtNasc: ref(""),
       reconstruir: ref(true),
+      lineSelected: {},
     };
   },
 
@@ -212,34 +262,76 @@ export default {
           ID: this.employees.length,
           FirstName: this.txtNome,
           LastName: this.txtSNome,
-          Prefix: "",
-          Position: "",
-          Picture: "",
-          BirthDate: "",
-          HireDate: "",
+          Prefix: this.txtTitulo,
+          Position: this.txtCargo,
+          BirthDate: this.dtNasc,
           Notes: "",
           Address: "",
         };
-        this.employees.push(NC);
-        //console.log(this.NomesTeste);
+        if (this.acaoSalvar == "Inserir") {
+          this.employees.push(NC);
+        } else {
+          this.employees[this.employees.indexOf(this.lineSelected)] = NC;
+        }
+
+        //console.log(this.employees);
       }
 
       this.txtNome = "";
       this.txtSNome = "";
+      this.txtTitulo = "";
+      this.txtCargo = "";
+      this.dtNasc = "";
       this.reconstruir = false;
       setTimeout(() => {
         this.reconstruir = true;
       }, 1);
-
+      this.acaoSalvar = "Inserir";
       //this.$refs.gridContainer.selectionChanged();
       //console.log(this.$refs.gridContainer);
     },
     Limpar() {
-      this.employees.pop();
+      this.acaoSalvar = "Inserir";
+      //this.employees.pop();
+      this.employees.splice(this.employees.indexOf(this.lineSelected), 1);
       this.reconstruir = false;
       setTimeout(() => {
         this.reconstruir = true;
       }, 1);
+      this.txtNome = "";
+      this.txtSNome = "";
+      this.txtTitulo = "";
+      this.txtCargo = "";
+      this.dtNasc = "";
+    },
+
+    Cancelar() {
+      this.acaoSalvar = "Inserir";
+      this.txtNome = "";
+      this.txtSNome = "";
+      this.txtTitulo = "";
+      this.txtCargo = "";
+      this.dtNasc = "";
+    },
+
+    TesteGrid() {
+      console.log(this.employees);
+      console.log(this.employees.indexOf(this.lineSelected));
+      console.log(this.lineSelected);
+    },
+
+    EditarGrid() {
+      this.acaoSalvar = "Editar";
+      this.txtNome = this.lineSelected.FirstName;
+      this.txtSNome = this.lineSelected.LastName;
+      this.txtTitulo = this.lineSelected.Prefix;
+      this.txtCargo = this.lineSelected.Position;
+      this.dtNasc = this.lineSelected.BirthDate;
+    },
+
+    onSelectionChanged({ selectedRowsData }) {
+      this.lineSelected = selectedRowsData[0];
+      //console.log(this.lineSelected);
     },
   },
 };

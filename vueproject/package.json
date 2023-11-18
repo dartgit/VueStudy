@@ -17,6 +17,7 @@
     "file-saver": "^2.0.5",
     "file-saver-es": "^2.0.5",
     "jspdf": "^2.5.1",
+    "moment": "^2.29.4",
     "quasar": "^2.0.0",
     "vue": "^3.2.13",
     "vue3-google-map": "^0.17.0",
