@@ -1,27 +1,43 @@
 <template>
   <div class="CentralizaGrid">
-    <div class="q-gutter-y-md column">
+    <div class="q-gutter-md row items-start">
       <q-select
         rounded
         outlined
-        clearable
         v-model="txtTitulo"
         :options="TituloOpt"
+        style="width: 110px"
         label="Titulo"
       />
-      <q-input rounded outlined clearable label="Nome" v-model="txtNome" />
       <q-input
         rounded
         outlined
         clearable
+        style="width: 290px"
+        label="Nome"
+        v-model="txtNome"
+      />
+      <q-input
+        rounded
+        outlined
+        clearable
+        style="width: 290px"
         label="Sobrenome"
         v-model="txtSNome"
       />
-      <q-input rounded outlined clearable label="Cargo" v-model="txtCargo" />
+      <q-input
+        rounded
+        outlined
+        clearable
+        style="width: 415px"
+        label="Cargo"
+        v-model="txtCargo"
+      />
       <q-select
         rounded
         outlined
         clearable
+        style="width: 290px"
         v-model="dtNasc"
         label="Data de Nascimento"
       >
