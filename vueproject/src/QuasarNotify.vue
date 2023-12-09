@@ -128,10 +128,9 @@ export default {
 
 <style>
 .buttons-columnqn > .column-headerqn {
-  width: 300px;
+  width: 400px;
   height: 50px;
   text-align: center;
-  padding-left: 15px;
   color: rgb(71, 2, 71);
 }
 
