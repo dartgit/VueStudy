@@ -262,6 +262,9 @@
           <div v-else-if="comp == '30'">
             <SorteioComp />
           </div>
+          <div v-else-if="comp == '31'">
+            <QRGenerator />
+          </div>
         </div>
         <div v-else>
           <router-view />
@@ -327,6 +330,7 @@ import CarouselQuasar from "./CarouselQuasar.vue";
 import CarouselDevX from "./CarouselDevX.vue";
 import ConsumoAPI from "./ConsumoAPI.vue";
 import SorteioComp from "./SorteioComp.vue";
+import QRGenerator from "./QRGenerator.vue";
 import App from "./LoginForm.vue";
 import { Quasar } from "quasar";
 import { useQuasar } from "quasar";
@@ -347,6 +351,7 @@ export default {
     CarouselQuasar,
     SorteioComp,
     TestePrinc,
+    QRGenerator,
   },
 
   data() {
@@ -441,6 +446,7 @@ export default {
         { icon: "memory", text: "Carousel Quasar", index: "25" },
         { icon: "memory", text: "Teste Principal", index: "26" },
         { icon: "star_rate", text: "Sorteio", index: "30" },
+        { icon: "qr_code", text: "QRCode", index: "31" },
       ],
       links5: [
         { icon: "slideshow", text: "Video", index: "27" },
@@ -495,6 +501,9 @@ export default {
         } else if (lBtn == "30") {
           this.container = true;
           this.comp = "30";
+        } else if (lBtn == "31") {
+          this.container = true;
+          this.comp = "31";
         } else if (lBtn == "27") {
           this.popVideo = true;
         } else if (lBtn == "28") {
