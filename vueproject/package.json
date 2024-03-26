@@ -21,6 +21,7 @@
     "qrcode.vue": "^3.4.1",
     "quasar": "^2.0.0",
     "vue": "^3.2.13",
+    "vue-qrcode-reader": "^5.5.3",
     "vue3-google-map": "^0.17.0",
     "vuex": "^4.0.2"
   },

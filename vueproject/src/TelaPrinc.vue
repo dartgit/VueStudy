@@ -265,6 +265,9 @@
           <div v-else-if="comp == '31'">
             <QRGenerator />
           </div>
+          <div v-else-if="comp == '32'">
+            <LeitorQR />
+          </div>
         </div>
         <div v-else>
           <router-view />
@@ -331,6 +334,7 @@ import CarouselDevX from "./CarouselDevX.vue";
 import ConsumoAPI from "./ConsumoAPI.vue";
 import SorteioComp from "./SorteioComp.vue";
 import QRGenerator from "./QRGenerator.vue";
+import LeitorQR from "./LeitorQR.vue";
 import App from "./LoginForm.vue";
 import { Quasar } from "quasar";
 import { useQuasar } from "quasar";
@@ -352,6 +356,7 @@ export default {
     SorteioComp,
     TestePrinc,
     QRGenerator,
+    LeitorQR,
   },
 
   data() {
@@ -447,6 +452,7 @@ export default {
         { icon: "memory", text: "Teste Principal", index: "26" },
         { icon: "star_rate", text: "Sorteio", index: "30" },
         { icon: "qr_code", text: "QRCode", index: "31" },
+        { icon: "qr_code_scanner", text: "QRCode", index: "32" },
       ],
       links5: [
         { icon: "slideshow", text: "Video", index: "27" },
@@ -504,6 +510,9 @@ export default {
         } else if (lBtn == "31") {
           this.container = true;
           this.comp = "31";
+        } else if (lBtn == "32") {
+          this.container = true;
+          this.comp = "32";
         } else if (lBtn == "27") {
           this.popVideo = true;
         } else if (lBtn == "28") {
