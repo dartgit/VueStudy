@@ -18,7 +18,7 @@
               src="@/assets/logo.png"
               style="height: 35px; max-width: 35px"
             />
-            <span class="q-ml-sm">V.Space</span>
+            <span class="q-ml-sm">Kiwi Tech</span>
           </q-toolbar-title>
 
           <q-space />
