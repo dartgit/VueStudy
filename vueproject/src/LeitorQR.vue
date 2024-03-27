@@ -44,6 +44,7 @@ export default {
     return {
       loading: true,
       destroyed: false,
+      result: ref(""),
     };
   },
 
@@ -65,15 +66,20 @@ export default {
         this.loading = true;
       }
     },
+
+    onDetect(detectedCodes) {
+      this.result = JSON.stringify(detectedCodes.map((code) => code.rawValue));
+    },
   },
 
   setup() {
-    const result = ref("");
+    //const result = ref("");
 
-    function onDetect(detectedCodes) {
-      console.log(detectedCodes);
-      result.value = JSON.stringify(detectedCodes.map((code) => code.rawValue));
-    }
+    //function onDetect(detectedCodes) {
+    //  result.value = JSON.stringify(detectedCodes.map((code) => code.rawValue));
+    //  console.log(result.value);
+    //  return result;
+    //}
 
     function paintOutline(detectedCodes, ctx) {
       for (const detectedCode of detectedCodes) {
@@ -170,10 +176,9 @@ export default {
     });
 
     return {
-      result: ref(result.value),
       trackFunctionSelected,
       selectedBarcodeFormats,
-      onDetect,
+      //onDetect,
     };
   },
 };

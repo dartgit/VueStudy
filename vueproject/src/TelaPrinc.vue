@@ -451,8 +451,8 @@ export default {
         { icon: "memory", text: "Carousel Quasar", index: "25" },
         { icon: "memory", text: "Teste Principal", index: "26" },
         { icon: "star_rate", text: "Sorteio", index: "30" },
-        { icon: "qr_code", text: "QRCode", index: "31" },
-        { icon: "qr_code_scanner", text: "QRCode", index: "32" },
+        { icon: "qr_code", text: "Gera QRCode", index: "31" },
+        { icon: "qr_code_scanner", text: "Leitura QRCode", index: "32" },
       ],
       links5: [
         { icon: "slideshow", text: "Video", index: "27" },
