@@ -2,7 +2,12 @@
   <div>
     <q-form>
       <div class="inputdiv">
+        <q-btn color="deep-purple" :label="LabelVif" @click="ClickVif" />
+      </div>
+
+      <div class="inputdiv">
         <q-input
+          v-if="vif"
           ref="edtNome"
           rounded
           outlined
@@ -19,6 +24,7 @@
 </template>
 
 <script>
+import { ref } from "vue";
 import QrcodeVue from "qrcode.vue";
 
 export default {
@@ -26,7 +32,20 @@ export default {
     return {
       text: "",
       size: 300,
+      LabelVif: "Esconder Digitação",
+      vif: ref(true),
     };
+  },
+  methods: {
+    ClickVif() {
+      if (this.vif == true) {
+        this.vif = false;
+        this.LabelVif = "Mostrar Digitação";
+      } else {
+        this.vif = true;
+        this.LabelVif = "Esconder Digitação";
+      }
+    },
   },
   components: {
     QrcodeVue,
